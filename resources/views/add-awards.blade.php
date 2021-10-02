@@ -16,6 +16,13 @@
                 </div>
 
                 <div class="mb-3 row">
+                    <label for="staticEmail" class="col-sm-2 col-form-label">Slug</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" placeholder="Automatically Genarated Slug Here">
+                    </div>
+                </div>
+
+                <div class="mb-3 row">
                     <label for="staticEmail" class="col-sm-2 col-form-label">Description</label>
                     <div class="col-sm-10">
                         <textarea class="form-control" id="exampleFormControlTextarea1" rows="4" placeholder="Award Description"></textarea>
