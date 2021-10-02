@@ -21,6 +21,10 @@ Route::get('about', function () {
     return view('about');
 });
 
+Route::get('contact', function () {
+    return view('contact');
+});
+
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
@@ -30,7 +34,11 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/projects', function () {
     return view('projects');
 })->name('projects');
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/awards', function () {
-    return view('awards');
-})->name('awards');
+Route::middleware(['auth:sanctum', 'verified'])->get('/awards/award-list', function () {
+    return view('awards-list');
+})->name('awards-list');
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/awards/add-awards', function () {
+    return view('add-awards');
+})->name('add-awards');
 

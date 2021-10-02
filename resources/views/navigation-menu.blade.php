@@ -24,7 +24,7 @@
                 </div>
 
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-jet-nav-link href="{{ route('awards') }}" :active="request()->routeIs('awards')">
+                    <x-jet-nav-link href="{{ route('awards-list') }}" :active="request()->routeIs('awards-list')">
                         {{ __('Awards') }}
                     </x-jet-nav-link>
                 </div>
