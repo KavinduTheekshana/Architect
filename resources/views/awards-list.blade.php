@@ -38,4 +38,13 @@
 </div>
 
 
+@push('data-table-scripts')
+<script>
+    $(document).ready(function() {
+        $('#table_id').DataTable();
+    });
+</script>
+@endpush
+
+
 @endsection

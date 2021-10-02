@@ -6,7 +6,8 @@
                 <!-- Logo -->
                 <div class="flex-shrink-0 flex items-center">
                     <a href="{{ route('dashboard') }}">
-                        <x-jet-application-mark class="block h-9 w-auto" />
+                    <img src="app/image/logo-mob-icon.png" style="width: 50px;" alt="">
+                        <!-- <x-jet-application-mark class="block h-9 w-auto" /> -->
                     </a>
                 </div>
 
@@ -28,6 +29,13 @@
                         {{ __('Awards') }}
                     </x-jet-nav-link>
                 </div>
+
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-jet-nav-link class="text-decoration-none" href="{{ route('contact-details') }}" :active="request()->routeIs('contact-details')">
+                        {{ __('Contact Details') }}
+                    </x-jet-nav-link>
+                </div>
+
             </div>
 
             <div class="hidden sm:flex sm:items-center sm:ml-6">

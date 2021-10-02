@@ -1,5 +1,9 @@
 <?php
 
+use App\Http\Controllers\AwardController;
+use App\Http\Controllers\ContactController;
+use App\Http\Controllers\slugController;
+use App\Models\Contact;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -41,4 +45,19 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/awards/award-list', funct
 Route::middleware(['auth:sanctum', 'verified'])->get('/awards/add-awards', function () {
     return view('add-awards');
 })->name('add-awards');
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/contact-details', function () {
+    $contacts = Contact::where('id', 1)->first();
+    return view('contact-details',['contacts' => $contacts]);
+})->name('contact-details');
+
+Route::group(['middleware' => ['auth']], function () { 
+    Route::post('contact-details-address-update', [ContactController::class, 'address'])->name('contact-details-address-update');
+    Route::post('contact-details-telephone-update', [ContactController::class, 'telephone'])->name('contact-details-telephone-update');
+    Route::post('contact-details-email-update', [ContactController::class, 'email'])->name('contact-details-email-update');
+    Route::post('contact-details-social-update', [ContactController::class, 'social'])->name('contact-details-social-update');
+});
+
+
+Route::get('/edit/{id}', [slugController::class, 'slug'])->name('updateArticle');
 

@@ -60,10 +60,10 @@
 
 <script type="text/javascript" src="https://cdn.datatables.net/1.10.8/js/jquery.dataTables.min.js"></script>
 
-<script>
-    $(document).ready(function() {
-        $('#table_id').DataTable();
-    });
-</script>
+
+@stack('data-table-scripts')
+@stack('slug-scripts')
+
+
 
 </html>
