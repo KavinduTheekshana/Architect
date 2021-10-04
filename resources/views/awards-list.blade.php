@@ -45,12 +45,12 @@
                     <td>{{$award->order}}</td>
                     <td>
                         @if($award->status==1)
-                        <a href="disable/{{$award->id}}" type="button" class="btn btn-warning"><i class="fas fa-lock"></i></a>
+                        <a href="disable/{{$award->slug}}" type="button" class="btn btn-warning"><i class="fas fa-lock"></i></a>
                         @else
-                        <a href="enable/{{$award->id}}" type="button" class="btn btn-primary"><i class="fas fa-unlock"></i></a>
+                        <a href="enable/{{$award->slug}}" type="button" class="btn btn-primary"><i class="fas fa-unlock"></i></a>
                         @endif
-                        <a href="#" type="button" class="btn btn-dark"><i class="fas fa-eye"></i></a>
-                        <a href="delete/{{$award->id}}" type="button" id="btn_delete" class="btn btn-danger"><i class="fas fa-trash"></i></a>
+                        <a href="view-awards/{{$award->slug}}" type="button" class="btn btn-dark"><i class="fas fa-eye"></i></a>
+                        <a href="delete/{{$award->slug}}" type="button" id="btn_delete" class="btn btn-danger"><i class="fas fa-trash"></i></a>
                     </td>
                 </tr>
                 @endforeach

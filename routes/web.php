@@ -61,9 +61,11 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('contact-details-social-update', [ContactController::class, 'social'])->name('contact-details-social-update');
 
     Route::post('save-award', [AwardController::class, 'store'])->name('save-award');
-    Route::get('awards/disable/{id}', [AwardController::class, 'disable'])->name('awards/disable');
-    Route::get('awards/enable/{id}', [AwardController::class, 'enable'])->name('awards/enable');
-    Route::get('awards/delete/{id}', [AwardController::class, 'delete'])->name('awards/delete');
+    Route::post('update-award', [AwardController::class, 'update'])->name('update-award');
+    Route::get('awards/view-awards/{slug}', [AwardController::class, 'view'])->name('awards/view-awards');
+    Route::get('awards/disable/{slug}', [AwardController::class, 'disable'])->name('awards/disable');
+    Route::get('awards/enable/{slug}', [AwardController::class, 'enable'])->name('awards/enable');
+    Route::get('awards/delete/{slug}', [AwardController::class, 'delete'])->name('awards/delete');
 });
 
 

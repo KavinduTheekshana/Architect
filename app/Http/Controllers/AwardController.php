@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Award;
 use App\Models\AwardImage;
 use Facade\FlareClient\Stacktrace\File;
+use Facade\FlareClient\View;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
@@ -79,6 +80,35 @@ class AwardController extends Controller
     }
 
 
+
+    public function update(Request $request)
+    {
+        $this->validate($request, [
+            'id' => ['required'],
+            'title' => ['string', 'required'],
+            'slug' => ['string', 'required'],
+            'order' => ['integer'],
+            'description' => ['string', 'required']
+        ]);
+        $award = new Award();
+        $award->title = $request['title'];
+        $award->slug = $request['slug'];
+        $award->order = $request['order'];
+        $award->description = $request['description'];
+        $data = array(
+            'title' => $award->title,
+            'slug' => $award->slug,
+            'order' => $award->order,
+            'description' => $award->description,
+        );
+        Award::where('id', $request['id'])->update($data);
+
+        $slug = $request['slug'];
+        return redirect()->route('awards/view-awards',$slug)->with('update', 'Award Update Sucessfully.');
+    }
+
+
+
     public function slug($string)
     {
         $string = strtolower($string);
@@ -101,24 +131,31 @@ class AwardController extends Controller
         return $randomString;
     }
 
-    public function disable($id)
+    public function disable($slug)
     {
-        $task = Award::find($id);
+        $task = Award::where('slug',$slug)->first();
         $task->status = false;
         $task->save();
         return redirect()->back()->with('status', 'Award Disabled Sucessfully.');
     }
-    public function enable($id)
+    public function enable($slug)
     {
-        $task = Award::find($id);
+        $task = Award::where('slug',$slug)->first();
         $task->status = true;
         $task->save();
         return redirect()->back()->with('status', 'Award Enabled Sucessfully.');
     }
-    public function delete($id)
+    public function delete($slug)
     {
-        Award::where('id', $id)->delete();
-        return redirect()->back()->with('delete', 'Award Delete Sucessfully.');
+        Award::where('slug', $slug)->delete();
+        return redirect()->route('awards-list')->with('delete', 'Award Delete Sucessfully.');
+        // return view('awards-list')->with('delete', 'Award Delete Sucessfully.');
+    }
+
+    public function view($slug)
+    {
+        $award = Award::where('slug', $slug)->first();
+        return view('view-awards',['award'=>$award]);
     }
 
 
@@ -144,24 +181,6 @@ class AwardController extends Controller
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Award  $award
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Award $award)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Award  $award
-     * @return \Illuminate\Http\Response
-     */
     public function destroy(Award $award)
     {
         //
