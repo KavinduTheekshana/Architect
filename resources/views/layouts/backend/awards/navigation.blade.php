@@ -1,5 +1,8 @@
 <x-app-layout>
     <x-slot name="header">
+        <div class="container">
+
+ 
         <div class="row">
 
             <a type="button" class="btn btn-outline-primary {{ Request::segment(2) === 'award-list' ? 'active' : null }} w-auto mr-3 text-xl" href="award-list">
@@ -14,6 +17,7 @@
 
 
 
+        </div>
         </div>
 
     </x-slot>

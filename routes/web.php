@@ -2,7 +2,9 @@
 
 use App\Http\Controllers\AwardController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\slugController;
+use App\Models\Award;
 use App\Models\Contact;
 use Illuminate\Support\Facades\Route;
 
@@ -39,7 +41,8 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/projects', function () {
 })->name('projects');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/awards/award-list', function () {
-    return view('awards-list');
+    $awards=Award::get();
+    return view('awards-list',['awards'=>$awards]);
 })->name('awards-list');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/awards/add-awards', function () {
@@ -56,8 +59,18 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('contact-details-telephone-update', [ContactController::class, 'telephone'])->name('contact-details-telephone-update');
     Route::post('contact-details-email-update', [ContactController::class, 'email'])->name('contact-details-email-update');
     Route::post('contact-details-social-update', [ContactController::class, 'social'])->name('contact-details-social-update');
+
+    Route::post('save-award', [AwardController::class, 'store'])->name('save-award');
+    Route::get('awards/disable/{id}', [AwardController::class, 'disable'])->name('awards/disable');
+    Route::get('awards/enable/{id}', [AwardController::class, 'enable'])->name('awards/enable');
+    Route::get('awards/delete/{id}', [AwardController::class, 'delete'])->name('awards/delete');
 });
 
 
-Route::get('/edit/{id}', [slugController::class, 'slug'])->name('updateArticle');
+Route::get('/slug/{title}', [slugController::class, 'slug'])->name('slug');
+
+
+Route::get('/add-post', [PostController::class, 'addPost']);
+Route::get('/add-comment/{id}', [PostController::class, 'addComment']);
+Route::get('/get-comment/{id}', [PostController::class, 'getCommentsByPost']);
 
