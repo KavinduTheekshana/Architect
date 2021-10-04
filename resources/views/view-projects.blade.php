@@ -69,7 +69,7 @@
                 </div>
             </div>
 
-            <div class="row">
+            <div class="row pt-5 pb-5">
                 @foreach($project->project_images as $projects)
                 <div class="col-md-3 mt-4">
                     <img src="{{asset($projects->url)}}" alt="">

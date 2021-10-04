@@ -2,12 +2,15 @@
 
 use App\Http\Controllers\AwardController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\slugController;
 use App\Models\Award;
 use App\Models\Contact;
+use App\Models\Home;
 use App\Models\Project;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -37,6 +40,19 @@ Route::get('contact', function () {
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/home_page', function () {
+    $projects=Project::get();
+
+
+    $home = DB::table('homes')
+    ->join('projects', 'homes.gallery', '=', 'projects.slug')
+    ->select('projects.*', 'homes.id','homes.image','homes.holder')
+    ->get();
+    
+    // return $home;
+    return view('home_page',['projects'=>$projects,'home'=>$home]);
+})->name('home_page');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/projects/add-projects', function () {
     return view('add-projects');
@@ -80,6 +96,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('projects/disable/{slug}', [ProjectController::class, 'disable'])->name('projects/disable');
     Route::get('projects/enable/{slug}', [ProjectController::class, 'enable'])->name('projects/enable');
     Route::get('projects/delete/{slug}', [ProjectController::class, 'delete'])->name('projects/delete');
+
+    Route::post('asign-gallery', [HomeController::class, 'store'])->name('asign-gallery');
 });
 
 
