@@ -1,4 +1,4 @@
-@extends('layouts.backend.awards.navigation')
+@extends('layouts.backend.projects.navigation')
 
 @section('content')
 
@@ -22,12 +22,11 @@
     @endif
     
     <div class="card p-5">
-
-
     <div class="mb-5">
-        <h3>Add New Award</h3>
+        <h3>Add New Project</h3>
     </div>
-        <form role="form" action="{{route('save-award')}}" method="POST" enctype="multipart/form-data">
+
+        <form role="form" action="{{route('save-projects')}}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="mb-3 row required">
                 <label for="staticEmail" class="col-sm-2 col-form-label">Title</label>
@@ -51,13 +50,6 @@
                 </div>
             </div>
 
-            <!-- 
-            <div class="mb-3 row required">
-                <label for="staticEmail" class="col-sm-2 col-form-label">Cover Image</label>
-                <div class="col-sm-10">
-                    <input class="form-control" type="file" id="formFile">
-                </div>
-            </div> -->
 
             <div class="mb-3 row required">
                 <label for="staticEmail" class="col-sm-2 col-form-label">Gallery</label>

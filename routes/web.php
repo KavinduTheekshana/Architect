@@ -3,9 +3,11 @@
 use App\Http\Controllers\AwardController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\slugController;
 use App\Models\Award;
 use App\Models\Contact;
+use App\Models\Project;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -36,9 +38,14 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/projects', function () {
-    return view('projects');
-})->name('projects');
+Route::middleware(['auth:sanctum', 'verified'])->get('/projects/add-projects', function () {
+    return view('add-projects');
+})->name('add-projects');
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/projects/projects-list', function () {
+    $projects=Project::get();
+    return view('projects-list',['projects'=>$projects]);
+})->name('projects-list');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/awards/award-list', function () {
     $awards=Award::get();
@@ -66,6 +73,13 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('awards/disable/{slug}', [AwardController::class, 'disable'])->name('awards/disable');
     Route::get('awards/enable/{slug}', [AwardController::class, 'enable'])->name('awards/enable');
     Route::get('awards/delete/{slug}', [AwardController::class, 'delete'])->name('awards/delete');
+
+    Route::post('save-projects', [ProjectController::class, 'store'])->name('save-projects');
+    Route::post('update-projects', [ProjectController::class, 'update'])->name('update-projects');
+    Route::get('projects/view-projects/{slug}', [ProjectController::class, 'view'])->name('projects/view-projects');
+    Route::get('projects/disable/{slug}', [ProjectController::class, 'disable'])->name('projects/disable');
+    Route::get('projects/enable/{slug}', [ProjectController::class, 'enable'])->name('projects/enable');
+    Route::get('projects/delete/{slug}', [ProjectController::class, 'delete'])->name('projects/delete');
 });
 
 

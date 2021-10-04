@@ -15,7 +15,5 @@ class Award extends Model
     public function award_images(){
         return $this->hasMany(AwardImage::class);
     }
-    public function unlick($id){
-        // unlink($file_path);
-    }
+   
 }

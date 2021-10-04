@@ -28,16 +28,14 @@
     @endif
 
     <div class="card p-5">
+    <h3 class="mb-4">View or Update Project</h3>
 
-    <div class="mb-5">
-        <h3>View or Update Award</h3>
-    </div>
-        <form role="form" action="{{route('update-award')}}" method="POST" enctype="multipart/form-data">
+        <form role="form" action="{{route('update-projects')}}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="mb-3 row required">
                 <label for="staticEmail" class="col-sm-2 col-form-label">ID</label>
                 <div class="col-sm-10">
-                    <input type="text" name="id" class="form-control" value="{{$award->id}}" readonly placeholder="Award ID">
+                    <input type="text" name="id" class="form-control" value="{{$project->id}}" readonly placeholder="Award ID">
                 </div>
             </div>
 
@@ -45,21 +43,21 @@
             <div class="mb-3 row required">
                 <label for="staticEmail" class="col-sm-2 col-form-label">Title</label>
                 <div class="col-sm-10">
-                    <input type="text" name="title" class="form-control" value="{{$award->title}}" placeholder="Enter Award Title">
+                    <input type="text" name="title" class="form-control" value="{{$project->title}}" placeholder="Enter Award Title">
                 </div>
             </div>
 
             <div class="mb-3 row required">
                 <label for="staticEmail" class="col-sm-2 col-form-label">Slug</label>
                 <div class="col-sm-10">
-                    <input type="text" name="slug" class="form-control" value="{{$award->slug}}" placeholder="Slug">
+                    <input type="text" name="slug" class="form-control" value="{{$project->slug}}" placeholder="Slug">
                 </div>
             </div>
 
             <div class="mb-3 row">
                 <label for="staticEmail" class="col-sm-2 col-form-label">Order</label>
                 <div class="col-sm-10">
-                    <input type="number" name="order" class="form-control" value="{{$award->order}}" placeholder="Enter Order Number">
+                    <input type="number" name="order" class="form-control" value="{{$project->order}}" placeholder="Enter Order Number">
                 </div>
             </div>
 
@@ -67,14 +65,14 @@
             <div class="mb-3 row required">
                 <label for="staticEmail" class="col-sm-2 col-form-label">Description</label>
                 <div class="col-sm-10">
-                    <textarea class="form-control" name="description" id="exampleFormControlTextarea1" rows="4" placeholder="Award Description">{{$award->description}}</textarea>
+                    <textarea class="form-control" name="description" id="exampleFormControlTextarea1" rows="4" placeholder="Award Description">{{$project->description}}</textarea>
                 </div>
             </div>
 
             <div class="row">
-                @foreach($award->award_images as $awards)
+                @foreach($project->project_images as $projects)
                 <div class="col-md-3 mt-4">
-                    <img src="{{asset($awards->url)}}" alt="">
+                    <img src="{{asset($projects->url)}}" alt="">
                 </div>
                 @endforeach
             </div>
@@ -86,9 +84,9 @@
 
             <div class="text-right">
 
-                <a href="{{ url('awards/delete',[$award->slug]) }}" type="button" class="btn btn-danger ml-auto">Delete</a>
+                <a href="{{ url('projects/delete',[$project->slug]) }}" type="button" class="btn btn-danger ml-auto">Delete</a>
 
-                <button type="submit" class="btn btn-warning ml-auto">Update Award Details</button>
+                <button type="submit" class="btn btn-warning ml-auto">Update Product Details</button>
 
             </div>
 
