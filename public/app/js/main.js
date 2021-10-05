@@ -7,7 +7,7 @@ function myGallery() {
     $("#second-menu-about").addClass("d-none");
     $("#second-menu-gallery-content").addClass("d-none");
     $("#second-menu-awards").addClass("d-none");
-    $("#gallery-menu").addClass("active");
+    $("#gallery-menu-web").addClass("active");
     $("#awards-menu").removeClass("active");
     // $("#bottum").addClass("d-none");
     // $("#middle").addClass("full-height");
@@ -16,7 +16,7 @@ function myGallery() {
     $("#second-menu-about").removeClass("d-none");
     $("#second-menu-gallery-content").removeClass("d-none");
     // $("#second-menu-awards").removeClass("d-none");
-    $("#gallery-menu").removeClass("active");
+    $("#gallery-menu-web").removeClass("active");
     // $("#bottum").removeClass("d-none");
     // $("#middle").removeClass("full-height");
   }
@@ -48,7 +48,7 @@ function myAwards() {
   }
   if (!$("#second-menu-gallery").hasClass("d-none")) {
     $("#second-menu-gallery").addClass("d-none");
-    $("#gallery-menu").removeClass("active");
+    $("#gallery-menu-web").removeClass("active");
   }
 }
 

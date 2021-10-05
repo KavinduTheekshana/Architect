@@ -18,6 +18,7 @@ class CreateAwardsTable extends Migration
             $table->integer('order')->nullable();
             $table->string('title');
             $table->string('slug');
+            $table->string('place');
             $table->longText('description');
             $table->boolean('status')->default(true);
             $table->timestamps();

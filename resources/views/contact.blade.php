@@ -40,8 +40,7 @@
                             </div>
                             <div class="col-md-9 col-sm-9 col-9 p-0 m-0">
                               <p class="upper">
-                                Damith s munasinghe associates,<br />
-                                79A kadawatha rd dehiwala<br />
+                                {!!$contact->address!!}
                               </p>
                             </div>
                           </div>
@@ -52,9 +51,9 @@
                             </div>
                             <div class="col-md-9 col-sm-9 col-9 p-0 m-0">
                               <p>
-                                +94 71 60 64 291<br />
-                                +94 11 27 62 501<br />
-                                +94 71 13 53 275
+                                {{$contact->telephone1}}<br />
+                                {{$contact->telephone2}}1<br />
+                                {{$contact->telephone3}}
                               </p>
                             </div>
                           </div>
@@ -64,11 +63,11 @@
                               <p>Email :</p>
                             </div>
                             <div class="col-md-9 col-sm-9 col-9 p-0 m-0">
-                             <a href="mailto: damith@dsma.lk"> <p>
-                                damith@dsma.lk </a>
+                             <a href="mailto: {{$contact->email1}}"> <p>
+                             {{$contact->email1}} </a>
                                 <br />
-                                <a href="mailto: dsmadetails@gmail.com">  dsmadetails@gmail.com </a><br />
-                                <a href="mailto: dsmaoffice@gmail.com">    dsmaoffice@gmail.com</a>
+                                <a href="mailto: {{$contact->email2}}">  {{$contact->email2}} </a><br />
+                                <a href="mailto: {{$contact->email3}}">    {{$contact->email3}}</a>
                               </p>
                             </div>
                           </div>
@@ -84,44 +83,7 @@
                           </div>
 
 
-                          <!-- <form action="">
-                            <div class="row">
-                              <div class="col-md-12 m-0 p-0">
-                                <h6 style="text-align: left">Contact Us</h6>
-                              </div>
-                            </div>
-
-                            <div class="row">
-                              <div class="col-md-12 m-0 pl-0">
-                                <input
-                                  type="text"
-                                  placeholder="Contact Number"
-                                  style="width: 100%; padding-left: 3px"
-                                />
-                              </div>
-                            </div>
-
-                            <div class="row mt-1">
-                              <div class="col-md-12 m-0 pl-0">
-                                <textarea
-                                  name="w3review"
-                                  placeholder="Your Message Here"
-                                  rows="4"
-                                  style="width: 100%; padding: 3px"
-                                ></textarea>
-                              </div>
-                            </div>
-
-                            <div class="row mt-1">
-                              <div class="col-md-12 m-0 plF-0">
-                                <input
-                                  type="button"
-                                  value="Submit"
-                                  style="width: 100%"
-                                />
-                              </div>
-                            </div>
-                          </form> -->
+                     
                         </div>
                       </div>
                     </div>

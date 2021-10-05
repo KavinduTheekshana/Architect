@@ -27,11 +27,18 @@
       integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="app/css/style.css" />
+    <link rel="stylesheet" href="{{ URL::asset('app/css/style.css'); }}" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css"
     />
+
+    <link
+    rel="stylesheet"
+    href="https://unpkg.com/swiper/swiper-bundle.min.css"
+  />
+
+
   </head>
   <body onload="Justify()">
     <div class="mob-header">
@@ -131,23 +138,23 @@
                 <div class="menu">
                   <div class="top">
                     <nav class="nav flex-column menu-nav">
-                      <a class="nav-link {{ Request::segment(1) === null ? 'active' : null }}" href="/">Home</a>
-                      <a class="nav-link {{ Request::segment(1) === 'about' ? 'active' : null }}" href="about">About</a>
+                      <a class="nav-link {{ Request::segment(1) === null ? 'active' : null }}" href="{{ url('/') }}">Home</a>
+                      <a class="nav-link {{ Request::segment(1) === 'about' ? 'active' : null }}" href="{{ url('about') }}">About</a>
                       <a
-                        id="gallery-menu"
+                        id="gallery-menu-web"
                         class="nav-link {{ Request::segment(1) === 'gallery' ? 'active' : null }}"
                         onclick="myGallery()"
                         href="#"
                         >gallery</a
                       >
                       <a
-                        id="awards-menu"
+                        id="awards-menu-web"
                         class="nav-link {{ Request::segment(1) === 'awards' ? 'active' : null }}"
                         onclick="myAwards()"
                         href="#"
                         >Awards</a
                       >
-                      <a class="nav-link {{ Request::segment(1) === 'contact' ? 'active' : null }}" href="contact">contact</a>
+                      <a class="nav-link {{ Request::segment(1) === 'contact' ? 'active' : null }}" href="{{ url('contact') }}">contact</a>
                     </nav>
                   </div>
                   <div id="middle" class="middle">
@@ -156,67 +163,13 @@
                       class="nav flex-column second-menu-nav d-none"
                     >
                       <ul class="temp-ul">
+                      @foreach($projects as $project)
                         <li>
-                          <a class="nav-link" href="gallery-2-6.html"
-                            >Lake villa by Carlson
+                          <a class="nav-link {{ Request::segment(2) === $project->slug ? 'active' : null }}" href="{{ url('gallery/'.$project->slug) }}"
+                            >{{$project->title}}
                           </a>
                         </li>
-
-                        <li>
-                          <a class="nav-link" href="gallery-5-7-12.html"
-                            >Urban compact living
-                          </a>
-                        </li>
-
-                        <li>
-                          <a
-                            class="nav-link"
-                            href="gallery-vasthu-convertor.html"
-                            >“Vasthu” converter</a
-                          >
-                        </li>
-
-                        <li>
-                          <a class="nav-link" href="gallery-1-9.html"
-                            >Urban remake
-                          </a>
-                        </li>
-
-                        <li>
-                          <a class="nav-link" href="gallery-8.html"
-                            >Small Dutch house</a
-                          >
-                        </li>
-
-                        <li>
-                          <a class="nav-link" href="gallery-3-4.html"
-                            >Bigger the faster
-                          </a>
-                        </li>
-
-                        <li>
-                          <a class="nav-link" href="#"
-                            >“Lavinia mews” guesthouse
-                          </a>
-                        </li>
-
-                        <li>
-                          <a class="nav-link" href="gallery-10.html"
-                            >Less is strong
-                          </a>
-                        </li>
-
-                        <li>
-                          <a class="nav-link" href="gallery-random.html"
-                            >Random clicks</a
-                          >
-                        </li>
-
-                        <li>
-                          <a class="nav-link" href="gallery-adaptable.html"
-                            >Adaptable studio apartment</a
-                          >
-                        </li>
+                        @endforeach
                       </ul>
                     </nav>
 
@@ -225,19 +178,20 @@
                       class="nav flex-column second-menu-nav d-none"
                     >
                       <ul class="temp-ul">
+                      @foreach($awards as $award)
                         <li>
-                          <a class="nav-link" href="award-1.html"
-                            >SLIA design completion award 2018
+                          <a class="nav-link {{ Request::segment(2) === $award->slug ? 'active' : null }}" href="{{ url('award/'.$award->slug) }}"
+                            >{{$award->title}}
                           </a>
                         </li>
-
-                        <li>
-                          <a class="nav-link" href="award-2.html"
-                            >SLIA design completion award 2015
-                          </a>
-                        </li>
+                        @endforeach
+                  
                       </ul>
                     </nav>
+
+                  
+                    @stack('description')
+
                   </div>
                   <div id="bottum" class="bottum">
                     <div class="color">
@@ -283,6 +237,12 @@
       crossorigin="anonymous"
     ></script>
 
-    <script src="app/js/main.js"></script>
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+
+    @stack('swipper-scripts')
+
+
+    <script src="{{ URL::asset('app/js/main.js'); }} "></script>
   </body>
 </html>

@@ -46,7 +46,7 @@
             <div class="mb-3 row required">
                 <label for="staticEmail" class="col-sm-2 col-form-label">Description</label>
                 <div class="col-sm-10">
-                    <textarea class="form-control" name="description" id="exampleFormControlTextarea1" rows="4" placeholder="Award Description"></textarea>
+                    <textarea class="form-control" name="description" id="exampleFormControlTextarea1" rows="15" placeholder="Award Description"></textarea>
                 </div>
             </div>
 

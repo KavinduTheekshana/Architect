@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Award;
 use App\Models\Project;
 use App\Models\ProjectImage;
 use Illuminate\Http\Request;
@@ -13,9 +14,12 @@ class ProjectController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function gallery($slug)
     {
-        //
+        $awards = Award::get();
+        $projects = Project::get();
+        $single_project = Project::where('slug', $slug)->first();
+        return view('gallery', ['awards' => $awards, 'projects' => $projects, 'single_project' => $single_project]);
     }
 
     /**
@@ -99,14 +103,14 @@ class ProjectController extends Controller
 
     public function disable($slug)
     {
-        $task = Project::where('slug',$slug)->first();
+        $task = Project::where('slug', $slug)->first();
         $task->status = false;
         $task->save();
         return redirect()->back()->with('status', 'Project Disabled Sucessfully.');
     }
     public function enable($slug)
     {
-        $task = Project::where('slug',$slug)->first();
+        $task = Project::where('slug', $slug)->first();
         $task->status = true;
         $task->save();
         return redirect()->back()->with('status', 'Project Enabled Sucessfully.');
@@ -121,7 +125,7 @@ class ProjectController extends Controller
     public function view($slug)
     {
         $project = Project::where('slug', $slug)->first();
-        return view('view-projects',['project'=>$project]);
+        return view('view-projects', ['project' => $project]);
     }
 
     /**
@@ -176,7 +180,7 @@ class ProjectController extends Controller
         Project::where('id', $request['id'])->update($data);
 
         $slug = $request['slug'];
-        return redirect()->route('projects/view-projects',$slug)->with('update', 'Project Update Sucessfully.');
+        return redirect()->route('projects/view-projects', $slug)->with('update', 'Project Update Sucessfully.');
     }
 
     /**

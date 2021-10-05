@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Award;
+use App\Models\Project;
 use App\Models\AwardImage;
 use Facade\FlareClient\Stacktrace\File;
 use Facade\FlareClient\View;
@@ -22,6 +23,14 @@ class AwardController extends Controller
     public function index()
     {
         return view('add-awards');
+    }
+
+    public function award($slug)
+    {
+        $awards = Award::get();
+    $projects = Project::get();
+    $single_award = Award::where('slug', $slug)->first();
+    return view('award', ['awards' => $awards, 'projects' => $projects,'single_award'=>$single_award]);
     }
 
     /**
@@ -51,6 +60,7 @@ class AwardController extends Controller
         $award = new Award();
         $award->title = $request['title'];
         $award->slug = $this->slug($request['title']);
+        $award->place = $request['place'];
         $award->order = $request['order'];
         $award->description = $request['description'];
         $award->save();
