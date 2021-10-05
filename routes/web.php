@@ -3,6 +3,7 @@
 use App\Http\Controllers\AwardController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\MemberController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\slugController;
@@ -10,6 +11,7 @@ use App\Models\Award;
 use App\Models\Contact;
 use App\Models\Home;
 use App\Models\Project;
+use App\Models\Member;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 
@@ -131,6 +133,11 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/home_page', function () {
     return view('home_page', ['projects' => $projects, 'home' => $home]);
 })->name('home_page');
 
+Route::middleware(['auth:sanctum', 'verified'])->get('/members', function () {
+    $members = Member::get();
+    return view('members',['members' => $members]);
+})->name('members');
+
 Route::middleware(['auth:sanctum', 'verified'])->get('/projects/add-projects', function () {
     return view('add-projects');
 })->name('add-projects');
@@ -175,6 +182,13 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('projects/delete/{slug}', [ProjectController::class, 'delete'])->name('projects/delete');
 
     Route::post('asign-gallery', [HomeController::class, 'store'])->name('asign-gallery');
+
+    Route::post('save-member', [MemberController::class, 'store'])->name('save-member');
+    Route::post('update-member', [MemberController::class, 'update'])->name('update-member');
+    Route::get('member/view-member/{id}', [MemberController::class, 'view'])->name('member/view-member');
+    Route::get('member/disable/{id}', [MemberController::class, 'disable'])->name('member/disable');
+    Route::get('member/enable/{id}', [MemberController::class, 'enable'])->name('member/enable');
+    Route::get('member/delete/{id}', [MemberController::class, 'delete'])->name('member/delete');
 });
 
 

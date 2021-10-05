@@ -42,7 +42,7 @@ class HomeController extends Controller
             'image' => ['required']
         ]);
         $home = new Home();
-        $home->holder = $request['holder'];
+        // $home->holder = $request['holder'];
         $home->gallery = $request['gallery'];
 
 
@@ -55,7 +55,15 @@ class HomeController extends Controller
         }else {
             $home->cover_image = 'uploads/home/default.png';
         } 
-        $home->save();
+
+        $data = array(
+            'gallery' => $home->gallery,
+            'image' => $home->image
+        );
+        Home::where('holder', $request['holder'])->update($data);
+
+
+        // $home->save();
         return redirect()->back()->with('status', 'Homepage Project Asign Sucessfully.');
     }
 

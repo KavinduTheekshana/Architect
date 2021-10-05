@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <title>DSMA | Damith .S. Munasinghe Associates</title>
-    <link rel="icon" href="app/image/fav.jpg" type="image/x-icon" />
+    <link rel="icon" href="{{asset('app/image/fav.jpg')}}" type="image/x-icon" />
     <!-- Required meta tags -->
     <meta charset="utf-8" />
     <meta
@@ -45,11 +45,11 @@
       <div class="container">
         <nav class="navbar navbar-expand-lg navbar-light">
           <a class="navbar-brand" href="#"
-            ><img src="app/image/logo-mob-icon.png" alt=""
+            ><img src="{{asset('app/image/logo-mob-icon.png')}}" alt=""
           /></a>
           <button id="navbar-toggler-menu" class="navbar-toggler" type="button">
             <!-- <span class="navbar-toggler-icon"></span> -->
-            <img src="app/image/icon/menu.svg" alt="" />
+            <img src="{{asset('app/image/icon/menu.svg')}}" alt="" />
           </button>
 
           <button
@@ -57,7 +57,7 @@
             class="navbar-toggler d-none"
             type="button"
           >
-            <img src="app/image/icon/close.svg" alt="" />
+            <img src="{{asset('app/image/icon/close.svg')}}" alt="" />
           </button>
         </nav>
         <div class="row ml-0 mr-0 mt-0 mb-4">
@@ -72,8 +72,8 @@
       <header id="header" class="navbar-demo d-none-custom">
         <div class="nav-bar">
           <nav class="nav flex-column menu-nav">
-            <a class="nav-link active" href="index.html">Home</a>
-            <a class="nav-link" href="about.html">About</a>
+            <a class="nav-link active" href="{{ url('/') }}">Home</a>
+            <a class="nav-link" href="{{ url('about') }}">About</a>
 
             <a
               id="gallery-menu"
@@ -84,22 +84,13 @@
             >
             <div id="sub-gallery" class="sub-gallery d-none">
               <ul>
-                <li><a href="gallery-2-6.html">Lake villa by Carlson</a></li>
-                <li>
-                  <a href="gallery-5-7-12.html">Urban compact living</a>
-                </li>
-                <li>
-                  <a href="gallery-vasthu-convertor.html">“Vasthu” converter</a>
-                </li>
-                <li><a href="gallery-1-9.html">Urban remake</a></li>
-                <li><a href="gallery-8.html">Small Dutch house</a></li>
-                <li><a href="gallery-3-4.html">Bigger the faster</a></li>
-                <li><a href="#">“Lavinia mews” guesthouse</a></li>
-                <li><a href="gallery-10.html">Less is strong</a></li>
-                <li><a href="gallery-random.html">Random clicks</a></li>
-                <li>
-                  <a href="gallery-adaptable.html">Adaptable studio apartmen</a>
-                </li>
+              @foreach($projects as $project)
+                        <li>
+                          <a class="{{ Request::segment(2) === $project->slug ? 'active' : null }}" href="{{ url('gallery/'.$project->slug) }}"
+                            >{{$project->title}}
+                          </a>
+                        </li>
+                        @endforeach
               </ul>
             </div>
             <a
@@ -111,15 +102,16 @@
             >
             <div id="sub-awards" class="sub-awards d-none">
               <ul class="temp-ul">
-                <li>
-                  <a href="award-1.html">SLIA design completion award 2018</a>
-                </li>
-                <li>
-                  <a href="award-2.html">SLIA design completion award 2015</a>
-                </li>
+              @foreach($awards as $award)
+                        <li>
+                          <a class="{{ Request::segment(2) === $award->slug ? 'active' : null }}" href="{{ url('award/'.$award->slug) }}"
+                            >{{$award->title}}
+                          </a>
+                        </li>
+                        @endforeach
               </ul>
             </div>
-            <a class="nav-link" href="contact">contact</a>
+            <a class="nav-link" href="{{ url('contact') }}">contact</a>
           </nav>
         </div>
       </header>
@@ -196,7 +188,7 @@
                   <div id="bottum" class="bottum">
                     <div class="color">
                       <a href="index.html">
-                        <img src="app/image/logo.png" alt=""
+                        <img src="{{asset('app/image/logo.png')}}" alt=""
                       /></a>
                     </div>
                   </div>
