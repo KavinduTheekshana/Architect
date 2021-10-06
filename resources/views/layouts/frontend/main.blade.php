@@ -165,7 +165,7 @@
 
 
     @stack('swipper-scripts')
-
+    @stack('chat-scripts')
 
     <script src="{{ URL::asset('app/js/main.js'); }} "></script>
 </body>

@@ -29,8 +29,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    $awards = Award::get();
-    $projects = Project::get();
+    $awards = Award::where('status',1)->orderBy('order', 'ASC')->get();
+    $projects = Project::where('status',1)->orderBy('order', 'ASC')->get();
     $holder_a = DB::table('homes')
         ->join('projects', 'homes.gallery', '=', 'projects.slug')
         ->select('projects.*', 'homes.id', 'homes.image', 'homes.holder')
@@ -107,16 +107,16 @@ Route::get('/', function () {
 });
 
 Route::get('about', function () {
-    $awards = Award::get();
-    $members = Member::get();
-    $projects = Project::get();
+    $awards = Award::where('status',1)->orderBy('order', 'ASC')->get();
+    $members = Member::where('status',1)->orderBy('order', 'ASC')->get();
+    $projects = Project::where('status',1)->orderBy('order', 'ASC')->get();
     return view('about', ['awards' => $awards, 'projects' => $projects,'members'=>$members]);
 });
 
 Route::get('contact', function () {
     $contact = Contact::first();
-    $awards = Award::get();
-    $projects = Project::get();
+    $awards = Award::where('status',1)->orderBy('order', 'ASC')->get();
+    $projects = Project::where('status',1)->orderBy('order', 'ASC')->get();
     return view('contact', ['contact' => $contact, 'awards' => $awards, 'projects' => $projects]);
 });
 
@@ -132,7 +132,7 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 })->name('dashboard');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/home_page', function () {
-    $projects = Project::get();
+    $projects = Project::where('status',1)->orderBy('order', 'ASC')->get();
     $home = DB::table('homes')
         ->join('projects', 'homes.gallery', '=', 'projects.slug')
         ->select('projects.*', 'homes.id', 'homes.image', 'homes.holder')
@@ -206,6 +206,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('save-user', [UserController::class, 'store'])->name('save-user');
     Route::post('update-user', [UserController::class, 'update'])->name('update-user');
     Route::get('user/view-kpXZbznHlU/{id}', [UserController::class, 'view'])->name('user/view-kpXZbznHlU');
+    Route::get('user/delete/{id}', [UserController::class, 'delete'])->name('user/delete');
 });
 
 

@@ -29,6 +29,12 @@
 
 
 
+        @if (session('delete'))
+    <div class="alert alert-danger" role="alert">
+        {{ session('delete') }}
+    </div>
+    @endif
+
 
 
 
@@ -105,7 +111,7 @@
                         <td>
                         @if($user->type==0)
                         <a href="user/view-kpXZbznHlU/{{$user->id}}" type="button" class="btn btn-dark"><i class="fas fa-eye"></i></a>
-                            <a href="member/delete/{{$user->id}}" type="button" id="btn_delete" class="btn btn-danger"><i class="fas fa-trash"></i></a>
+                            <a href="user/delete/{{$user->id}}" type="button" id="btn_delete" class="btn btn-danger"><i class="fas fa-trash"></i></a>
                             @endif
                             @if($user->type==1)
                             <a href="user/profile" type="button" class="btn btn-dark"><i class="fas fa-eye"></i></a>

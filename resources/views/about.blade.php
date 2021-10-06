@@ -35,6 +35,8 @@
     </p>
 
     <div class="team team-mob">
+
+    
       <div class="image-details">
         <img src="Image/team/1.jpg" alt="" />
         <div class="details pl-4">

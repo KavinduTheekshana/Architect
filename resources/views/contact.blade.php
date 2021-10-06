@@ -91,6 +91,11 @@
                 </div>
               </div>
 
+              @push('chat-scripts')
+
+              <script type="text/javascript">window.$crisp=[];window.CRISP_WEBSITE_ID="bde850bf-5183-4e7f-95e4-9b79760fe98b";(function(){d=document;s=d.createElement("script");s.src="https://client.crisp.chat/l.js";s.async=1;d.getElementsByTagName("head")[0].appendChild(s);})();</script>
+
+              @endpush
 @endsection
 
 <!-- ---------------- footer ------------ -->

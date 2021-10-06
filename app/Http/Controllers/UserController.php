@@ -49,4 +49,10 @@ class UserController extends Controller
         User::where('id', $request['id'])->update($data);
         return redirect()->back()->with('status', 'User Password Update Sucessfully.');
     }
+
+    public function delete($id)
+    {
+        User::where('id', $id)->delete();
+        return redirect()->route('kpXZbznHlU')->with('delete', 'User Delete Sucessfully.');
+    }
 }
