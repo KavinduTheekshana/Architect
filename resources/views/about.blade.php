@@ -135,64 +135,26 @@
                 after considering carefully the client’s need.
               </p>
 
-              <div class="team team-pc">
-                <div class="row ml4 mr-0 mt-3">
-                  <div class="single-image">
-                    <img src="Image/team/1.jpg" alt="" />
-                    <p class="tal">chartered architect</p>
-                    <p class="tal">damith s munasinghe</p>
-                  </div>
-
-                  <div class="single-image">
-                    <img src="Image/team/2.jpg" alt="" />
-                    <p class="tal">chartered architect</p>
-                    <p class="tal">sasike piyathilake</p>
-                  </div>
-
-                  <div class="single-image">
-                    <img src="Image/team/3.jpg" alt="" />
-                    <div class="name-text">
-                      <p class="tar">structural engineer</p>
-                      <p class="tar">ajith vandabona</p>
-                    </div>
-                  </div>
-
-                  <div class="single-image">
-                    <img src="Image/team/4.jpg" alt="" />
-                    <p class="tar">chartered architect</p>
-                    <p class="tar">sasike piyathilake</p>
-                  </div>
-                </div>
-
-                <div class="row ml4 mr-0 mt-4">
-                  <div class="single-image">
-                    <img src="Image/team/5.jpg" alt="" />
-                    <p class="tal">chartered architect</p>
-                    <p class="tal">damith s munasinghe</p>
-                  </div>
-
-                  <div class="single-image">
-                    <img src="Image/team/6.jpg" alt="" />
-                    <p class="tal">chartered architect</p>
-                    <p class="tal">sasike piyathilake</p>
-                  </div>
-
-                  <div class="single-image">
-                    <img src="Image/team/7.jpg" alt="" />
-                    <div class="name-text">
-                      <p class="tar">structural engineer</p>
-                      <p class="tar">ajith vandabona</p>
-                    </div>
-                  </div>
-
-                  <div class="single-image">
-                    <img src="Image/team/8.jpg" alt="" />
-                    <p class="tar">chartered architect</p>
-                    <p class="tar">sasike piyathilake</p>
-                  </div>
-                </div>
-              </div>
+      
             </div>
+          </div>
+
+
+          <div class="col-md-11 center m-auto p-0">
+          <div class="team team-pc" style="height: 286px;overflow: auto;">
+                <div class="row ml4 mr-0 mt-3">
+
+                @foreach($members as $member)
+                  <div class="single-image" style="width: 25%; margin-bottom: 25px;cursor: pointer;">
+                    <img src="{{asset($member->image)}}" alt="" />
+                    <p class="" style="text-align: center;">{{$member->title}}</p>
+                    <p class="" style="text-align: center;">{{$member->name}}</p>
+                  </div>
+                  @endforeach
+
+                </div>
+
+              </div>
           </div>
         </div>
       </div>

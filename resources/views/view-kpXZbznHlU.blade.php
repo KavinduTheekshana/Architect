@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Members') }}
+            {{ __('Users') }}
         </h2>
     </x-slot>
 
@@ -28,61 +28,52 @@
         @endif
 
 
-        @if (session('delete'))
-    <div class="alert alert-danger" role="alert">
-        {{ session('delete') }}
-    </div>
-    @endif
+
 
 
 
 
         <div class="card p-5">
-            <form role="form" action="{{route('update-member')}}" method="POST" enctype="multipart/form-data">
-                @csrf
 
-                <div class="mb-3">
-                <img src="{{asset($member->image)}}" style="width: 150px; height: 150px; object-fit: cover;" alt="">
-                </div>
-                
+        <div class="mb-5">
+            <h3>Add New User</h3>
+        </div>
+
+            <form role="form" action="{{route('update-user')}}" method="POST" enctype="multipart/form-data">
+                @csrf
                 <div class="mb-3 row required">
                     <label for="staticEmail" class="col-sm-2 col-form-label">ID</label>
                     <div class="col-sm-10">
-                        <input type="text" name="id" class="form-control" value="{{$member->id}}" readonly placeholder="Member ID">
+                        <input type="text" name="id" class="form-control" value="{{$user->id}}" readonly>
                     </div>
                 </div>
-
 
                 <div class="mb-3 row required">
                     <label for="staticEmail" class="col-sm-2 col-form-label">Name</label>
                     <div class="col-sm-10">
-                        <input type="text" name="name" class="form-control" value="{{$member->name}}" placeholder="Enter Name Here">
+                        <input type="text" name="name" class="form-control" value="{{$user->name}}" readonly placeholder="Enter Name Here">
                     </div>
                 </div>
-
                 <div class="mb-3 row required">
-                    <label for="staticEmail" class="col-sm-2 col-form-label">Job Title</label>
+                    <label for="staticEmail" class="col-sm-2 col-form-label">Email</label>
                     <div class="col-sm-10">
-                        <input type="text" name="title" class="form-control" value="{{$member->title}}" placeholder="Enter Job Title Here">
+                        <input type="text" name="email" class="form-control" value="{{$user->email}}" readonly placeholder="Enter Email Address Here">
                     </div>
                 </div>
-
-                <div class="mb-3 row">
-                    <label for="staticEmail" class="col-sm-2 col-form-label">Order</label>
+                <div class="mb-3 row required">
+                    <label for="staticEmail" class="col-sm-2 col-form-label">Password</label>
                     <div class="col-sm-10">
-                        <input type="number" name="order" value="{{$member->order}}" class="form-control" placeholder="Enter Order Number">
+                        <input type="password" name="password" class="form-control" value="" placeholder="Enter Password Here">
                     </div>
                 </div>
-                
-     
-
-           
-
-
+                <div class="mb-3 row required">
+                    <label for="staticEmail" class="col-sm-2 col-form-label">Re Enter Password</label>
+                    <div class="col-sm-10">
+                        <input type="password" name="password_confirmation" class="form-control" value="" placeholder="Re Enter Password Here">
+                    </div>
+                </div>
                 <div class="text-right">
-                    <a href="{{ url('members/delete',[$member->id]) }}" type="button" class="btn btn-danger ml-auto">Delete</a>
-
-                <button type="submit" class="btn btn-warning ml-auto">Update Member Details</button>
+                    <button type="submit" class="btn btn-dark ml-auto">Update User</button>
                 </div>
             </form>
         </div>
@@ -90,11 +81,13 @@
 
 
 
+       
+
+
 
 
     </div>
 
-
- 
+    
 
 </x-app-layout>

@@ -20,13 +20,15 @@
         {{ session('status') }}
     </div>
     @endif
-    
+
     <div class="card p-5">
 
 
-    <div class="mb-5">
-        <h3>Add New Award</h3>
-    </div>
+        <div class="mb-5">
+            <h3>Add New Award</h3>
+        </div>
+      
+
         <form role="form" action="{{route('save-award')}}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="mb-3 row required">
@@ -58,13 +60,7 @@
                 </div>
             </div>
 
-            <!-- 
-            <div class="mb-3 row required">
-                <label for="staticEmail" class="col-sm-2 col-form-label">Cover Image</label>
-                <div class="col-sm-10">
-                    <input class="form-control" type="file" id="formFile">
-                </div>
-            </div> -->
+
 
             <div class="mb-3 row required">
                 <label for="staticEmail" class="col-sm-2 col-form-label">Gallery</label>
@@ -88,10 +84,6 @@
 
 
 
-<!-- <div class="container mt-5 mb-5">
-    <div class="card p-5">
-    <form action="/target" class="dropzone"></form>
-    </div>
-</div> -->
+
 
 @endsection

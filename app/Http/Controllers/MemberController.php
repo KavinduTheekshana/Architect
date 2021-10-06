@@ -54,12 +54,37 @@ class MemberController extends Controller
             $image->move($destinationPath, $cover_image);
             $member->image = "$cover_image";
         }else {
-            $member->cover_image = 'uploads/members/default.png';
+            $member->image = 'uploads/members/default.png';
         } 
 
 
         $member->save();
         return redirect()->back()->with('status', 'Member Added Sucessfully.');
+    }
+
+    public function update(Request $request)
+    {
+        
+        $this->validate($request, [
+            'id' => ['required'],
+            'name' => ['string', 'required'],
+            'title' => ['string', 'required'],
+            'order' => ['string'],
+        ]);
+        $member = new Member();
+        $member->name = $request['name'];
+        $member->title = $request['title'];
+        $member->order = $request['order'];
+
+
+
+        $data = array(
+            'name' => $member->name,
+            'title' => $member->title,
+            'order' => $member->order,
+        );
+        Member::where('id', $request['id'])->update($data);
+        return redirect()->back()->with('status', 'Member Update Sucessfully.');
     }
 
 
@@ -125,17 +150,7 @@ class MemberController extends Controller
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Member  $member
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Member $member)
-    {
-        //
-    }
+    
 
     /**
      * Remove the specified resource from storage.

@@ -7,11 +7,13 @@ use App\Http\Controllers\MemberController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\slugController;
+use App\Http\Controllers\UserController;
 use App\Models\Award;
 use App\Models\Contact;
 use App\Models\Home;
 use App\Models\Project;
 use App\Models\Member;
+use App\Models\User;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 
@@ -106,8 +108,9 @@ Route::get('/', function () {
 
 Route::get('about', function () {
     $awards = Award::get();
+    $members = Member::get();
     $projects = Project::get();
-    return view('about', ['awards' => $awards, 'projects' => $projects]);
+    return view('about', ['awards' => $awards, 'projects' => $projects,'members'=>$members]);
 });
 
 Route::get('contact', function () {
@@ -161,6 +164,11 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/contact-details', functio
     return view('contact-details', ['contacts' => $contacts]);
 })->name('contact-details');
 
+Route::middleware(['auth:sanctum', 'verified'])->get('/kpXZbznHlU', function () {
+    $users = User::get();
+    return view('kpXZbznHlU',['users' => $users]);
+})->name('kpXZbznHlU');
+
 Route::group(['middleware' => ['auth']], function () {
     Route::post('contact-details-address-update', [ContactController::class, 'address'])->name('contact-details-address-update');
     Route::post('contact-details-telephone-update', [ContactController::class, 'telephone'])->name('contact-details-telephone-update');
@@ -189,6 +197,11 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('member/disable/{id}', [MemberController::class, 'disable'])->name('member/disable');
     Route::get('member/enable/{id}', [MemberController::class, 'enable'])->name('member/enable');
     Route::get('member/delete/{id}', [MemberController::class, 'delete'])->name('member/delete');
+
+
+    Route::post('save-user', [UserController::class, 'store'])->name('save-user');
+    Route::post('update-user', [UserController::class, 'update'])->name('update-user');
+    Route::get('user/view-kpXZbznHlU/{id}', [UserController::class, 'view'])->name('user/view-kpXZbznHlU');
 });
 
 
