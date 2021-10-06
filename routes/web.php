@@ -124,7 +124,11 @@ Route::get('award/{slug}', [AwardController::class, 'award'])->name('award');
 Route::get('gallery/{slug}', [ProjectController::class, 'gallery'])->name('gallery');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return view('dashboard');
+    $project = Project::count();
+    $award = Award::count();
+    $member = Member::count();
+    $user = User::count();
+    return view('dashboard',['project'=>$project,'award'=>$award,'member'=>$member,'user'=>$user]);
 })->name('dashboard');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/home_page', function () {
