@@ -151,9 +151,17 @@
               </p>
             </div>
           </div>
+
+       
+
+
         </div>
+       
       </div>
+
     </div>
+
+    @stack('services-scripts')
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

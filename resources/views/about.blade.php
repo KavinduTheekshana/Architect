@@ -35,32 +35,32 @@
     </p>
 
     <div class="team team-mob">
-    <div class="row">
-    
+      <div class="row">
 
-    @foreach($members as $member)
-    <div class="image-details col-sm-4 col-md-3">
-        <img src="{{asset($member->image)}}" alt="" />
-        <div class="details">
-          <p>{{$member->title}}</p>
-          <p>{{$member->name}}</p>
+
+        @foreach($members as $member)
+        <div class="image-details col-sm-4 col-md-3">
+          <img src="{{asset($member->image)}}" alt="" />
+          <div class="details">
+            <p>{{$member->title}}</p>
+            <p>{{$member->name}}</p>
+          </div>
         </div>
+        @endforeach
+
       </div>
-      @endforeach
 
-</div>
 
-     
 
-      
 
-    
 
-     
 
-     
 
-    
+
+
+
+
+
     </div>
   </div>
 </div>
@@ -98,32 +98,92 @@
                 after considering carefully the client’s need.
               </p>
 
-      
+
             </div>
           </div>
 
 
           <div class="col-md-11 center m-auto p-0">
-          <div class="team team-pc" style="height: 286px;overflow: auto;">
-                <div class="row ml4 mr-0 mt-3">
+            <div class="team team-pc" style="height: 286px;overflow: auto;">
+              <div class="row ml4 mr-0 mt-3">
 
                 @foreach($members as $member)
-                  <div class="single-image" style="width: 25%; margin-bottom: 25px;cursor: pointer;">
-                    <img src="{{asset($member->image)}}" alt="" />
-                    <p class="" style="text-align: center;">{{$member->title}}</p>
-                    <p class="" style="text-align: center;">{{$member->name}}</p>
-                  </div>
-                  @endforeach
-
+                <div class="single-image" style="width: 25%; margin-bottom: 25px;cursor: pointer;">
+                  <img src="{{asset($member->image)}}" alt="" />
+                  <p class="" style="text-align: center;">{{$member->title}}</p>
+                  <p class="" style="text-align: center;">{{$member->name}}</p>
                 </div>
+                @endforeach
 
               </div>
+
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
 </div>
+
+
+
+@push('services-scripts')
+
+<div class="services" style="z-index: 99;">
+
+  <div class="services-btn-section">
+    <div class="services-btn">
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+        <img src="{{asset('app/image/logo.png')}}" alt="">
+      </button>
+    </div>
+    <p>Services</p>
+  </div>
+</div>
+
+<div class="modal  fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true" style="display: none;">
+  <div class="modal-dialog modal-services modal-dialog-centered" role="document">
+    <div class="modal-content" style="background-color: transparent;border: none;">
+
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+
+      <div class="swiper mySwiper" style="width: 100%;">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide">
+            <img src="{{asset('app/image/services-1.png')}}" style="width: 100%;" alt="">
+          </div>
+          <div class="swiper-slide">
+            <img src="{{asset('app/image/services-2.png')}}" style="width: 100%;" alt="">
+          </div>
+        </div>
+        <div class="swiper-button swiper-button-next"></div>
+        <div class="swiper-button swiper-button-prev"></div>
+      </div>
+
+
+    </div>
+  </div>
+</div>
+@endpush
+
+
+@push('swipper-scripts')
+<script>
+    var swiper = new Swiper(".mySwiper", {
+      keyboard: {
+          enabled: true,
+        },
+        navigation: {
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev",
+        },
+    });
+</script>
+@endpush
+
+
 
 @endsection
 
