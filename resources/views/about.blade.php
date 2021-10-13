@@ -35,71 +35,32 @@
     </p>
 
     <div class="team team-mob">
+    <div class="row">
+    
+
+    @foreach($members as $member)
+    <div class="image-details col-sm-4 col-md-3">
+        <img src="{{asset($member->image)}}" alt="" />
+        <div class="details">
+          <p>{{$member->title}}</p>
+          <p>{{$member->name}}</p>
+        </div>
+      </div>
+      @endforeach
+
+</div>
+
+     
+
+      
 
     
-      <div class="image-details">
-        <img src="Image/team/1.jpg" alt="" />
-        <div class="details pl-4">
-          <p>chartered architect</p>
-          <p>damith s munasinghe</p>
-        </div>
-      </div>
 
-      <div class="image-details">
-        <div class="details pr-4">
-          <p class="tlr">chartered architect</p>
-          <p class="tlr">sasike piyathilake</p>
-        </div>
-        <img src="Image/team/2.jpg" alt="" />
-      </div>
+     
 
-      <div class="image-details">
-        <img src="Image/team/3.jpg" alt="" />
-        <div class="details pl-4">
-          <p>structural engineer</p>
-          <p>ajith vandabona</p>
-        </div>
-      </div>
+     
 
-      <div class="image-details">
-        <div class="details pr-4">
-          <p class="tlr">interior designer</p>
-          <p class="tlr">saman senanayake</p>
-        </div>
-        <img src="Image/team/4.jpg" alt="" />
-      </div>
-
-      <div class="image-details">
-        <img src="Image/team/5.jpg" alt="" />
-        <div class="details pl-4">
-          <p>3d visualizer</p>
-          <p>chathura jayalath</p>
-        </div>
-      </div>
-
-      <div class="image-details">
-        <div class="details pr-4">
-          <p class="tlr">landscape architect</p>
-          <p class="tlr">ishara maduranga</p>
-        </div>
-        <img src="Image/team/6.jpg" alt="" />
-      </div>
-
-      <div class="image-details">
-        <img src="Image/team/7.jpg" alt="" />
-        <div class="details pl-4">
-          <p>architect</p>
-          <p>chanchala jayasooriya</p>
-        </div>
-      </div>
-
-      <div class="image-details">
-        <div class="details pr-4">
-          <p class="tlr">project coordinator</p>
-          <p class="tlr">dinesha hettiarachchi</p>
-        </div>
-        <img src="Image/team/8.jpg" alt="" />
-      </div>
+    
     </div>
   </div>
 </div>

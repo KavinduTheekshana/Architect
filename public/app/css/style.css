@@ -1088,6 +1088,11 @@ p {
   text-align: justify;
 }
 
+.main-wrapper .row .center .content .gray-bg .color .about .team {
+  height: 286px;
+  overflow: auto;
+}
+
 .main-wrapper .row .center .content .gray-bg .color .about .team .ml4 {
   margin-left: -4px !important;
 }
@@ -1096,6 +1101,12 @@ p {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+}
+
+.main-wrapper .row .center .content .gray-bg .color .about .team .row .single-image {
+  width: 25%;
+  margin-bottom: 25px;
+  cursor: pointer;
 }
 
 .main-wrapper .row .center .content .gray-bg .color .about .team .row .single-image img {
@@ -1109,6 +1120,7 @@ p {
   font-weight: 500;
   text-transform: capitalize;
   font-size: 10px;
+  text-align: center;
   line-height: 0;
   margin-top: 10px;
   font-style: italic;
@@ -1306,31 +1318,23 @@ p {
 }
 
 .about-mob .team .image-details {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
+  width: 50%;
+  padding: 16px;
 }
 
 .about-mob .team .image-details img {
-  width: 50%;
-  height: -webkit-fit-content;
-  height: -moz-fit-content;
-  height: fit-content;
+  width: 100%;
 }
 
 .about-mob .team .image-details .details {
-  width: 50%;
-  margin-top: auto;
-  margin-bottom: auto;
+  width: 100%;
+  margin-top: 10px;
 }
 
 .about-mob .team .image-details .details p {
-  text-transform: capitalize;
-  margin-bottom: 0;
+  text-align: center;
   font-size: 12px;
-}
-
-.about-mob .team .image-details .tlr {
-  text-align: right;
+  text-transform: capitalize;
+  margin-bottom: 0 !important;
 }
 /*# sourceMappingURL=style.css.map */
