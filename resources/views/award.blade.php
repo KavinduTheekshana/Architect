@@ -22,7 +22,7 @@
 
 
 <!-- -------------------- body ---------- -->
-<div class="col col-md-12 col-lg-10 p-0">
+<div class="col col-md-12 col-lg-10 p-0 col-fw">
     <div class="gray-bg">
         <div class="color">
             <div class="swiper mySwiper">

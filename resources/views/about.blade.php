@@ -9,7 +9,7 @@
 
 
 
-<div class="col col-md-12 col-lg-10 p-0 about-mob d-none">
+<div class="col col-md-12 col-lg-12 p-0 about-mob d-none">
   <div class="justify-content-center align-items-cente mt-4">
     <h6 class="align-middle">
       DAMITH S MUNASINGHE ASSOCIATES (DSMA),
@@ -129,7 +129,7 @@
 
 @push('services-scripts')
 
-<div class="services" style="z-index: 99;">
+<!-- <div class="services" style="z-index: 99;">
 
   <div class="services-btn-section">
     <div class="services-btn">
@@ -165,7 +165,7 @@
 
     </div>
   </div>
-</div>
+</div> -->
 @endpush
 
 

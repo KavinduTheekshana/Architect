@@ -172,6 +172,18 @@ body {
 }
 
 @media only screen and (max-width: 1000px) {
+  .contact-details .container {
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    margin: auto;
+    display: -ms-grid;
+    display: grid;
+  }
+  .main-wrapper .row .center .content .gray-bg .color .mySwiper .swiper-slide img {
+    -o-object-fit: contain !important;
+       object-fit: contain !important;
+  }
   .about-mob {
     display: block !important;
   }
@@ -357,6 +369,9 @@ body {
   .main-wrapper .row .center .content .gray-bg {
     height: 410px !important;
   }
+  .main-wrapper .row .center .content .gray-bg .swiper-slide img {
+    height: 410px !important;
+  }
   .main-wrapper
 .row
 .center
@@ -386,12 +401,41 @@ p {
   }
 }
 
+@media (max-width: 1000px) {
+  .col-fw {
+    max-width: 100% !important;
+  }
+}
+
+@media (min-width: 992px) {
+  .navbar-expand-lg .navbar-toggler {
+    display: block;
+  }
+  .navbar-expand-lg {
+    max-width: 690px;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    margin: auto;
+  }
+}
+
 @media only screen and (max-width: 1024px) {
   .main-wrapper {
     min-height: calc(100vh - 180px) !important;
   }
   .main-wrapper .content .menu {
     height: 410px !important;
+  }
+  .main-wrapper .content .gray-bg {
+    height: 410px !important;
+  }
+  .main-wrapper .content .gray-bg .swiper-slide img {
+    height: 410px !important;
+  }
+  .main-wrapper .content .contact-details {
+    height: 410px !important;
+    padding-top: 20px;
   }
   .main-wrapper .gallery {
     height: 410px !important;
@@ -425,6 +469,10 @@ p {
   }
 }
 
+.display-content {
+  display: contents;
+}
+
 @media only screen and (max-width: 1000px) {
   .contact-gray {
     height: 100% !important;
@@ -437,9 +485,6 @@ p {
     height: 450px !important;
   }
   .gray-bg .mySwiper .swiper-slide {
-    height: 100% !important;
-  }
-  .gray-bg .mySwiper .swiper-slide img {
     height: 100% !important;
   }
   .mob-header {
@@ -537,7 +582,7 @@ p {
     height: 100% !important;
   }
   .gray-bg .mySwiper .swiper-slide img {
-    height: 100% !important;
+    height: 410px !important;
   }
   .mob-header {
     display: block;
@@ -582,6 +627,11 @@ p {
   .gray-bg {
     height: 340px !important;
     padding: 0 !important;
+    margin: auto;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    display: contents;
   }
   .gray-bg .mySwiper {
     height: 340px !important;

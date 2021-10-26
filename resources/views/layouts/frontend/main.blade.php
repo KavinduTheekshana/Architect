@@ -39,7 +39,7 @@
           <img src="{{asset('app/image/icon/close.svg')}}" alt="" />
         </button>
       </nav>
-      <div class="row ml-0 mr-0 mt-0 mb-4">
+      <div class="row ml-0 mr-0 mt-0 mb-4 justify-content-center">
         <div class="col col-md-12 col-lg-9 col-sm-12 center m-0 p-0">
           <p id="character_justify4" class="name-top">
             damith .s. munasinghe associates
@@ -125,6 +125,29 @@
 
                     </ul>
                   </nav>
+
+
+
+                 @if(Request::segment(1) === 'about')
+                  <nav id="second-menu-services" class="nav flex-column second-menu-nav">
+                    <ul class="temp-ul">
+               
+                      <li>
+                        <a class="nav-link" href="{{ url('services') }}">Our Services
+                        </a>
+                      </li>
+              
+
+                    </ul>
+                  </nav>
+                 
+                 @endif 
+                    
+                  
+                 
+
+
+
 
 
                   @stack('description')

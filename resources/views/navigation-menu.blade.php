@@ -43,6 +43,12 @@
                 </div>
 
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-jet-nav-link class="text-decoration-none" href="{{ route('services-list') }}" :active="request()->routeIs('services-list')">
+                        {{ __('Services') }}
+                    </x-jet-nav-link>
+                </div>
+
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-jet-nav-link class="text-decoration-none" href="{{ route('contact-details') }}" :active="request()->routeIs('contact-details')">
                         {{ __('Contact Details') }}
                     </x-jet-nav-link>
@@ -182,6 +188,35 @@
             <x-jet-responsive-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
                 {{ __('Dashboard') }}
             </x-jet-responsive-nav-link>
+
+            <x-jet-responsive-nav-link class="text-decoration-none" href="{{ route('home_page') }}" :active="request()->routeIs('home_page')">
+                {{ __('Home Page') }}
+            </x-jet-responsive-nav-link>
+
+            <x-jet-responsive-nav-link class="text-decoration-none" href="{{ route('members') }}" :active="request()->routeIs('members')">
+                {{ __('Members') }}
+            </x-jet-responsive-nav-link>
+
+            <x-jet-responsive-nav-link class="text-decoration-none" href="{{ route('projects-list') }}" :active="request()->routeIs('projects-list')">
+                {{ __('Projects') }}
+            </x-jet-responsive-nav-link>
+
+            <x-jet-responsive-nav-link class="text-decoration-none" href="{{ route('awards-list') }}" :active="request()->routeIs('awards-list')">
+                {{ __('Awards') }}
+            </x-jet-responsive-nav-link>
+
+            <x-jet-responsive-nav-link class="text-decoration-none" href="{{ route('contact-details') }}" :active="request()->routeIs('contact-details')">
+                {{ __('Contact Details') }}
+            </x-jet-responsive-nav-link>
+
+            @if(Auth::user()->type == 1)
+
+
+            <x-jet-responsive-nav-link class="text-decoration-none" href="{{ route('kpXZbznHlU') }}" :active="request()->routeIs('kpXZbznHlU')">
+                {{ __('Users') }}
+            </x-jet-responsive-nav-link>
+
+            @endif
         </div>
 
         <!-- Responsive Settings Options -->

@@ -6,6 +6,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MemberController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\slugController;
 use App\Http\Controllers\UserController;
 use App\Models\Award;
@@ -13,6 +14,7 @@ use App\Models\Contact;
 use App\Models\Home;
 use App\Models\Project;
 use App\Models\Member;
+use App\Models\Service;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
@@ -113,6 +115,15 @@ Route::get('about', function () {
     return view('about', ['awards' => $awards, 'projects' => $projects,'members'=>$members]);
 });
 
+Route::get('services', function () {
+    $awards = Award::where('status',1)->orderBy('order', 'ASC')->get();
+    $services = Service::orderBy('order', 'ASC')->get();
+    $projects = Project::where('status',1)->orderBy('order', 'ASC')->get();
+    return view('services',['awards' => $awards, 'projects' => $projects,'services' => $services]);
+});
+
+
+
 Route::get('contact', function () {
     $contact = Contact::first();
     $awards = Award::where('status',1)->orderBy('order', 'ASC')->get();
@@ -144,6 +155,11 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/members', function () {
     $members = Member::get();
     return view('members',['members' => $members]);
 })->name('members');
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/services-list', function () {
+    $services = Service::get();
+    return view('services-list',['services' => $services]);
+})->name('services-list');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/projects/add-projects', function () {
     return view('add-projects');
@@ -207,6 +223,12 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('update-user', [UserController::class, 'update'])->name('update-user');
     Route::get('user/view-kpXZbznHlU/{id}', [UserController::class, 'view'])->name('user/view-kpXZbznHlU');
     Route::get('user/delete/{id}', [UserController::class, 'delete'])->name('user/delete');
+
+
+    Route::post('save-service', [ServiceController::class, 'store'])->name('save-service');
+    Route::get('save-service/delete/{id}', [ServiceController::class, 'delete'])->name('save-service/delete');
+
+
 });
 
 

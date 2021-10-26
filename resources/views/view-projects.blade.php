@@ -1,4 +1,4 @@
-@extends('layouts.backend.awards.navigation')
+@extends('layouts.backend.projects.navigation')
 
 @section('content')
 

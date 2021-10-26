@@ -9,7 +9,7 @@ function myGallery() {
     $("#second-menu-awards").addClass("d-none");
     $("#gallery-menu-web").addClass("active");
     $("#awards-menu").removeClass("active");
-    // $("#bottum").addClass("d-none");
+    $("#second-menu-services").addClass("d-none");
     // $("#middle").addClass("full-height");
   } else {
     $("#second-menu-gallery").addClass("d-none");
@@ -17,6 +17,7 @@ function myGallery() {
     $("#second-menu-gallery-content").removeClass("d-none");
     // $("#second-menu-awards").removeClass("d-none");
     $("#gallery-menu-web").removeClass("active");
+    $("#second-menu-services").removeClass("d-none");
     // $("#bottum").removeClass("d-none");
     // $("#middle").removeClass("full-height");
   }
@@ -40,11 +41,13 @@ function myAwards() {
     $("#second-menu-about").addClass("d-none");
     $("#second-menu-gallery-content").addClass("d-none");
     $("#awards-menu").addClass("active");
+    $("#second-menu-services").addClass("d-none");
   } else {
     $("#second-menu-awards").addClass("d-none");
     $("#second-menu-about").removeClass("d-none");
     $("#second-menu-gallery-content").removeClass("d-none");
     $("#awards-menu").removeClass("active");
+    $("#second-menu-services").removeClass("d-none");
   }
   if (!$("#second-menu-gallery").hasClass("d-none")) {
     $("#second-menu-gallery").addClass("d-none");
