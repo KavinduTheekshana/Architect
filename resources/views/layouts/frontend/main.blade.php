@@ -53,8 +53,9 @@
         <nav class="nav flex-column menu-nav">
           <a class="nav-link active" href="{{ url('/') }}">Home</a>
           <a class="nav-link" href="{{ url('about') }}">About</a>
+          <a class="nav-link" href="{{ url('services') }}">Our Services</a>
 
-          <a id="gallery-menu" class="nav-link" onclick="myGalleryMob()" href="#">gallery</a>
+          <a id="gallery-menu" class="nav-link" onclick="myGalleryMob()" href="javascript:void(0);">gallery</a>
           <div id="sub-gallery" class="sub-gallery d-none">
             <ul>
               @foreach($projects as $project)
@@ -65,8 +66,8 @@
               @endforeach
             </ul>
           </div>
-          <a id="awards-menu" class="nav-link" onclick="myAwardsMob()" href="#">Awards</a>
-          <a id="awards-menu" class="nav-link" onclick="myAwardsMob()" href="#">Publications</a>
+          <a id="awards-menu" class="nav-link" onclick="myAwardsMob()" href="javascript:void(0);">Awards</a>
+          
           <div id="sub-awards" class="sub-awards d-none">
             <ul class="temp-ul">
               @foreach($awards as $award)
@@ -77,6 +78,18 @@
               @endforeach
             </ul>
           </div>
+          <a id="awards-menu" class="nav-link" onclick="myPublicationsMob()" href="javascript:void(0);">Publications</a>
+          <div id="sub-publications" class="sub-awards d-none">
+            <ul class="temp-ul">
+              @foreach($publications as $publication)
+              <li>
+                <a class="{{ Request::segment(2) === $award->slug ? 'active' : null }}" href="{{ url('publication/'.$publication->slug) }}">{{$publication->title}}
+                </a>
+              </li>
+              @endforeach
+            </ul>
+          </div>
+
           <a class="nav-link" href="{{ url('contact') }}">contact</a>
         </nav>
       </div>

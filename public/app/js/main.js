@@ -26,6 +26,7 @@ function myGalleryMob() {
   if ($("#sub-gallery").hasClass("d-none")) {
     $("#sub-gallery").removeClass("d-none");
     $("#sub-awards").addClass("d-none");
+    $("#sub-publications").addClass("d-none");
   }else{
     $("#sub-gallery").addClass("d-none");
   }
@@ -62,6 +63,7 @@ function myAwardsMob() {
   if ($("#sub-awards").hasClass("d-none")) {
     $("#sub-awards").removeClass("d-none");
     $("#sub-gallery").addClass("d-none");
+    $("#sub-publications").addClass("d-none");
   }else{
     $("#sub-awards").addClass("d-none");
   }
@@ -89,6 +91,16 @@ function myPublications() {
     $("#second-menu-services").removeClass("d-none");
   }
 
+}
+
+function myPublicationsMob() {
+  if ($("#sub-publications").hasClass("d-none")) {
+    $("#sub-publications").removeClass("d-none");
+    $("#sub-gallery").addClass("d-none");
+    $("#sub-awards").addClass("d-none");
+  }else{
+    $("#sub-publications").addClass("d-none");
+  }
 }
 
 // ----------- Header ----------------
