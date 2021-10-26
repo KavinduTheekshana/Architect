@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Award;
 use App\Models\Project;
 use App\Models\ProjectImage;
+use App\Models\Publication;
 use Illuminate\Http\Request;
 
 class ProjectController extends Controller
@@ -16,10 +17,11 @@ class ProjectController extends Controller
      */
     public function gallery($slug)
     {
-        $awards = Award::get();
-        $projects = Project::get();
+        $awards = Award::where('status',1)->orderBy('order', 'ASC')->get();
+        $publications = Publication::where('status',1)->orderBy('order', 'ASC')->get();
+        $projects = Project::where('status',1)->orderBy('order', 'ASC')->get();
         $single_project = Project::where('slug', $slug)->first();
-        return view('gallery', ['awards' => $awards, 'projects' => $projects, 'single_project' => $single_project]);
+        return view('gallery', ['awards' => $awards, 'projects' => $projects, 'single_project' => $single_project,'publications' => $publications]);
     }
 
     /**

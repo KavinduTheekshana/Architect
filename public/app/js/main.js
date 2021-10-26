@@ -10,16 +10,15 @@ function myGallery() {
     $("#gallery-menu-web").addClass("active");
     $("#awards-menu").removeClass("active");
     $("#second-menu-services").addClass("d-none");
-    // $("#middle").addClass("full-height");
+    $("#second-menu-publications").addClass("d-none");
+    $("#publications-menu-web").removeClass("active");
+    $("#awards-menu-web").removeClass("active");
   } else {
     $("#second-menu-gallery").addClass("d-none");
     $("#second-menu-about").removeClass("d-none");
     $("#second-menu-gallery-content").removeClass("d-none");
-    // $("#second-menu-awards").removeClass("d-none");
     $("#gallery-menu-web").removeClass("active");
     $("#second-menu-services").removeClass("d-none");
-    // $("#bottum").removeClass("d-none");
-    // $("#middle").removeClass("full-height");
   }
 }
 
@@ -41,12 +40,16 @@ function myAwards() {
     $("#second-menu-about").addClass("d-none");
     $("#second-menu-gallery-content").addClass("d-none");
     $("#awards-menu").addClass("active");
+    $("#awards-menu-web").addClass("active");
     $("#second-menu-services").addClass("d-none");
+    $("#second-menu-publications").addClass("d-none");
+    $("#publications-menu-web").removeClass("active");
   } else {
     $("#second-menu-awards").addClass("d-none");
     $("#second-menu-about").removeClass("d-none");
     $("#second-menu-gallery-content").removeClass("d-none");
     $("#awards-menu").removeClass("active");
+    $("#awards-menu-web").removeClass("active");
     $("#second-menu-services").removeClass("d-none");
   }
   if (!$("#second-menu-gallery").hasClass("d-none")) {
@@ -62,6 +65,30 @@ function myAwardsMob() {
   }else{
     $("#sub-awards").addClass("d-none");
   }
+}
+
+// ---------------------------------------------
+function myPublications() {
+  var val = 0;
+  var x = document.getElementById("second-menu-publications");
+  if ($("#second-menu-publications").hasClass("d-none")) {
+    $("#second-menu-publications").removeClass("d-none");
+    $("#second-menu-about").addClass("d-none");
+    $("#second-menu-gallery-content").addClass("d-none");
+    $("#second-menu-awards").addClass("d-none");
+    $("#publications-menu-web").addClass("active");
+    $("#awards-menu").removeClass("active");
+    $("#second-menu-services").addClass("d-none");
+    $("#second-menu-gallery").addClass("d-none");
+    $("#awards-menu-web").removeClass("active");
+  } else {
+    $("#second-menu-publications").addClass("d-none");
+    $("#second-menu-about").removeClass("d-none");
+    $("#second-menu-gallery-content").removeClass("d-none");
+    $("#publications-menu-web").removeClass("active");
+    $("#second-menu-services").removeClass("d-none");
+  }
+
 }
 
 // ----------- Header ----------------

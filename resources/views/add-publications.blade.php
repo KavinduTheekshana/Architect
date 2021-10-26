@@ -1,4 +1,4 @@
-@extends('layouts.backend.awards.navigation')
+@extends('layouts.backend.publications.navigation')
 
 @section('content')
 
@@ -25,23 +25,23 @@
 
 
         <div class="mb-5">
-            <h3>Add New Award</h3>
+            <h3>Add New Publications</h3>
         </div>
       
 
-        <form role="form" action="{{route('save-award')}}" method="POST" enctype="multipart/form-data">
+        <form role="form" action="{{route('save-publications')}}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="mb-3 row required">
                 <label for="staticEmail" class="col-sm-2 col-form-label">Title</label>
                 <div class="col-sm-10">
-                    <input type="text" name="title" class="form-control" placeholder="Enter Award Title">
+                    <input type="text" name="title" class="form-control" placeholder="Enter publication Title">
                 </div>
             </div>
 
             <div class="mb-3 row required">
                 <label for="staticEmail" class="col-sm-2 col-form-label">Place</label>
                 <div class="col-sm-10">
-                    <input type="text" name="place" class="form-control" placeholder="Enter Award Place">
+                    <input type="text" name="place" class="form-control" placeholder="Enter publication Place">
                 </div>
             </div>
 
@@ -56,7 +56,7 @@
             <div class="mb-3 row required">
                 <label for="staticEmail" class="col-sm-2 col-form-label">Description</label>
                 <div class="col-sm-10">
-                    <textarea class="form-control" name="description" id="exampleFormControlTextarea1" rows="15" placeholder="Award Description"></textarea>
+                    <textarea class="form-control" name="description" id="exampleFormControlTextarea1" rows="15" placeholder="publication Description"></textarea>
                 </div>
             </div>
 
@@ -73,7 +73,7 @@
 
 
             <div class="text-right">
-                <button type="submit" class="btn btn-success ml-auto">Save Award Details</button>
+                <button type="submit" class="btn btn-success ml-auto">Save publication Details</button>
             </div>
 
 

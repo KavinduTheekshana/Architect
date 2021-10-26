@@ -6,6 +6,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MemberController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\PublicationController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\slugController;
 use App\Http\Controllers\UserController;
@@ -16,6 +17,7 @@ use App\Models\Project;
 use App\Models\Member;
 use App\Models\Service;
 use App\Models\User;
+use App\Models\Publication;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 
@@ -32,6 +34,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     $awards = Award::where('status',1)->orderBy('order', 'ASC')->get();
+    $publications = Publication::where('status',1)->orderBy('order', 'ASC')->get();
     $projects = Project::where('status',1)->orderBy('order', 'ASC')->get();
     $holder_a = DB::table('homes')
         ->join('projects', 'homes.gallery', '=', 'projects.slug')
@@ -105,33 +108,37 @@ Route::get('/', function () {
         ->where('homes.holder','l')
         ->first();
 
-    return view('index', ['awards' => $awards, 'projects' => $projects,'holder_a'=>$holder_a,'holder_b'=>$holder_b,'holder_c'=>$holder_c,'holder_d'=>$holder_d,'holder_e'=>$holder_e,'holder_f'=>$holder_f,'holder_g'=>$holder_g,'holder_h'=>$holder_h,'holder_i'=>$holder_i,'holder_j'=>$holder_j,'holder_k'=>$holder_k,'holder_l'=>$holder_l]);
+    return view('index', ['awards' => $awards, 'publications' => $publications, 'projects' => $projects,'holder_a'=>$holder_a,'holder_b'=>$holder_b,'holder_c'=>$holder_c,'holder_d'=>$holder_d,'holder_e'=>$holder_e,'holder_f'=>$holder_f,'holder_g'=>$holder_g,'holder_h'=>$holder_h,'holder_i'=>$holder_i,'holder_j'=>$holder_j,'holder_k'=>$holder_k,'holder_l'=>$holder_l]);
 });
 
 Route::get('about', function () {
+    $publications = Publication::where('status',1)->orderBy('order', 'ASC')->get();
     $awards = Award::where('status',1)->orderBy('order', 'ASC')->get();
     $members = Member::where('status',1)->orderBy('order', 'ASC')->get();
     $projects = Project::where('status',1)->orderBy('order', 'ASC')->get();
-    return view('about', ['awards' => $awards, 'projects' => $projects,'members'=>$members]);
+    return view('about', ['awards' => $awards, 'projects' => $projects,'members'=>$members, 'publications' => $publications]);
 });
 
 Route::get('services', function () {
+    $publications = Publication::where('status',1)->orderBy('order', 'ASC')->get();
     $awards = Award::where('status',1)->orderBy('order', 'ASC')->get();
     $services = Service::orderBy('order', 'ASC')->get();
     $projects = Project::where('status',1)->orderBy('order', 'ASC')->get();
-    return view('services',['awards' => $awards, 'projects' => $projects,'services' => $services]);
+    return view('services',['awards' => $awards, 'projects' => $projects,'services' => $services, 'publications' => $publications]);
 });
 
 
 
 Route::get('contact', function () {
+    $publications = Publication::where('status',1)->orderBy('order', 'ASC')->get();
     $contact = Contact::first();
     $awards = Award::where('status',1)->orderBy('order', 'ASC')->get();
     $projects = Project::where('status',1)->orderBy('order', 'ASC')->get();
-    return view('contact', ['contact' => $contact, 'awards' => $awards, 'projects' => $projects]);
+    return view('contact', ['contact' => $contact, 'awards' => $awards, 'projects' => $projects, 'publications' => $publications]);
 });
 
 Route::get('award/{slug}', [AwardController::class, 'award'])->name('award');
+Route::get('publication/{slug}', [PublicationController::class, 'publication'])->name('publication');
 Route::get('gallery/{slug}', [ProjectController::class, 'gallery'])->name('gallery');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
@@ -175,9 +182,19 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/awards/award-list', funct
     return view('awards-list', ['awards' => $awards]);
 })->name('awards-list');
 
+
 Route::middleware(['auth:sanctum', 'verified'])->get('/awards/add-awards', function () {
     return view('add-awards');
 })->name('add-awards');
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/publications/publications-list', function () {
+    $publications = Publication::get();
+    return view('publications-list', ['publications' => $publications]);
+})->name('publications-list');
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/publications/add-publications', function () {
+    return view('add-publications');
+})->name('add-publications');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/contact-details', function () {
     $contacts = Contact::where('id', 1)->first();
@@ -201,6 +218,14 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('awards/disable/{slug}', [AwardController::class, 'disable'])->name('awards/disable');
     Route::get('awards/enable/{slug}', [AwardController::class, 'enable'])->name('awards/enable');
     Route::get('awards/delete/{slug}', [AwardController::class, 'delete'])->name('awards/delete');
+
+
+    Route::post('save-publications', [PublicationController::class, 'store'])->name('save-publications');
+    Route::post('update-publications', [PublicationController::class, 'update'])->name('update-publications');
+    Route::get('publications/view-publications/{slug}', [PublicationController::class, 'view'])->name('publications/view-publications');
+    Route::get('publications/disable/{slug}', [PublicationController::class, 'disable'])->name('publications/disable');
+    Route::get('publications/enable/{slug}', [PublicationController::class, 'enable'])->name('publications/enable');
+    Route::get('publications/delete/{slug}', [PublicationController::class, 'delete'])->name('publications/delete');
 
     Route::post('save-projects', [ProjectController::class, 'store'])->name('save-projects');
     Route::post('update-projects', [ProjectController::class, 'update'])->name('update-projects');

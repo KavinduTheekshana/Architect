@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Award;
 use App\Models\Project;
 use App\Models\AwardImage;
+use App\Models\Publication;
 use Facade\FlareClient\Stacktrace\File;
 use Facade\FlareClient\View;
 use Illuminate\Http\Request;
@@ -27,10 +28,11 @@ class AwardController extends Controller
 
     public function award($slug)
     {
-        $awards = Award::get();
-    $projects = Project::get();
+        $awards = Award::where('status',1)->orderBy('order', 'ASC')->get();
+        $publications = Publication::where('status',1)->orderBy('order', 'ASC')->get();
+        $projects = Project::where('status',1)->orderBy('order', 'ASC')->get();
     $single_award = Award::where('slug', $slug)->first();
-    return view('award', ['awards' => $awards, 'projects' => $projects,'single_award'=>$single_award]);
+    return view('award', ['awards' => $awards, 'projects' => $projects,'single_award'=>$single_award,'publications' => $publications]);
     }
 
     /**
@@ -159,7 +161,6 @@ class AwardController extends Controller
     {
         Award::where('slug', $slug)->delete();
         return redirect()->route('awards-list')->with('delete', 'Award Delete Sucessfully.');
-        // return view('awards-list')->with('delete', 'Award Delete Sucessfully.');
     }
 
     public function view($slug)

@@ -20,7 +20,7 @@
 
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-jet-nav-link class="text-decoration-none" href="{{ route('home_page') }}" :active="request()->routeIs('home_page')">
-                        {{ __('Home Page') }}
+                        {{ __('Home') }}
                     </x-jet-nav-link>
                 </div>
 
@@ -43,6 +43,12 @@
                 </div>
 
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-jet-nav-link class="text-decoration-none" href="{{ route('publications-list') }}" :active="request()->routeIs('publications-list')">
+                        {{ __('Publications') }}
+                    </x-jet-nav-link>
+                </div>
+
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-jet-nav-link class="text-decoration-none" href="{{ route('services-list') }}" :active="request()->routeIs('services-list')">
                         {{ __('Services') }}
                     </x-jet-nav-link>
@@ -50,7 +56,7 @@
 
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-jet-nav-link class="text-decoration-none" href="{{ route('contact-details') }}" :active="request()->routeIs('contact-details')">
-                        {{ __('Contact Details') }}
+                        {{ __('Contact') }}
                     </x-jet-nav-link>
                 </div>
 
