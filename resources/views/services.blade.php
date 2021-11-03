@@ -11,15 +11,13 @@
 <!-- -------------------- body ---------- -->
 <div class="col col-md-12 col-lg-10 p-0 col-fw">
     <div class="gray-bg">
-        <div class="color" style="background: #000;">
-            <div class="swiper mySwiper">
-                <div class="swiper-wrapper">
+    <div class="color" style="background: #000;">
+                    <div class="swiper mySwiper">
+                      <div class="swiper-wrapper service-slider">
 
                     @foreach($services as $service)
-                    <div class="swiper-slide">
-                        <img src="{{asset($service->image)}}" style="width: 100%;
-                            height: fit-content;
-                            margin: auto;" alt="" />
+                    <div class="swiper-slide" style="width: 100px;">
+                        <img src="{{asset($service->image)}}" alt="" />
                     </div>
                     @endforeach
 
@@ -36,17 +34,20 @@
 
 @push('swipper-scripts')
 <script>
-var swiper = new Swiper(".mySwiper", {
-    keyboard: {
-        enabled: true,
-    },
-
-    loop: true,
-    navigation: {
-        nextEl: ".swiper-button-next",
-        prevEl: ".swiper-button-prev",
-    },
-});
+    var swiper = new Swiper(".mySwiper", {
+        keyboard: {
+            enabled: true,
+        },
+        pagination: {
+            el: ".swiper-pagination",
+            clickable: true,
+        },
+        loop: true,
+        navigation: {
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev",
+        },
+    });
 </script>
 @endpush
 
