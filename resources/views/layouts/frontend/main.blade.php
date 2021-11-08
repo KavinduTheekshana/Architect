@@ -183,7 +183,7 @@
                 </div>
                 <div id="bottum" class="bottum">
                   <div class="color">
-                    <a href="index.html">
+                    <a href="{{ url('/') }}">
                       <img src="{{asset('app/image/logo.png')}}" alt="" /></a>
                   </div>
                 </div>
