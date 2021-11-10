@@ -1,26 +1,26 @@
 // ----------- Gallery Show and Hide ---------------
-function myGallery() {
-  var val = 0;
-  var x = document.getElementById("second-menu-gallery");
-  if ($("#second-menu-gallery").hasClass("d-none")) {
-    $("#second-menu-gallery").removeClass("d-none");
-    $("#second-menu-about").addClass("d-none");
-    $("#second-menu-gallery-content").addClass("d-none");
-    $("#second-menu-awards").addClass("d-none");
-    $("#gallery-menu-web").addClass("active");
-    $("#awards-menu").removeClass("active");
-    $("#second-menu-services").addClass("d-none");
-    $("#second-menu-publications").addClass("d-none");
-    $("#publications-menu-web").removeClass("active");
-    $("#awards-menu-web").removeClass("active");
-  } else {
-    $("#second-menu-gallery").addClass("d-none");
-    $("#second-menu-about").removeClass("d-none");
-    $("#second-menu-gallery-content").removeClass("d-none");
-    $("#gallery-menu-web").removeClass("active");
-    $("#second-menu-services").removeClass("d-none");
-  }
-}
+// function myGallery() {
+//   var val = 0;
+//   var x = document.getElementById("second-menu-gallery");
+//   if ($("#second-menu-gallery").hasClass("d-none")) {
+//     $("#second-menu-gallery").removeClass("d-none");
+//     $("#second-menu-about").addClass("d-none");
+//     $("#second-menu-gallery-content").addClass("d-none");
+//     $("#second-menu-awards").addClass("d-none");
+//     $("#gallery-menu-web").addClass("active");
+//     $("#awards-menu").removeClass("active");
+//     $("#second-menu-services").addClass("d-none");
+//     $("#second-menu-publications").addClass("d-none");
+//     $("#publications-menu-web").removeClass("active");
+//     $("#awards-menu-web").removeClass("active");
+//   } else {
+//     $("#second-menu-gallery").addClass("d-none");
+//     $("#second-menu-about").removeClass("d-none");
+//     $("#second-menu-gallery-content").removeClass("d-none");
+//     $("#gallery-menu-web").removeClass("active");
+//     $("#second-menu-services").removeClass("d-none");
+//   }
+// }
 
 function myGalleryMob() {
   if ($("#sub-gallery").hasClass("d-none")) {

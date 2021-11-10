@@ -46,14 +46,26 @@ class ProjectController extends Controller
             'title' => ['string', 'required'],
             'order' => ['integer'],
             'description' => ['string', 'required'],
-            'image' => ['required']
+            'image' => ['required'],
+            'cover' => ['required']
         ]);
         $project = new Project();
         $project->title = $request['title'];
         $project->slug = $this->slug($request['title']);
         $project->order = $request['order'];
         $project->description = $request['description'];
+       
+
+        if($request->hasFile('cover')){
+            $cover = $request['cover'];
+            $destinationPath = 'uploads/projects/'; // upload path
+                $product_image = 'uploads/projects/' . date('YmdHis') . "_" . $this->generateRandomString(10) . "_" . $cover->getClientOriginalName() . "." . $cover->getClientOriginalExtension();
+                $cover->move($destinationPath, $product_image);
+            $project->cover_image = $product_image;
+        }
         $project->save();
+
+
 
         $project2 = Project::find($project->id);
 
@@ -65,7 +77,7 @@ class ProjectController extends Controller
             foreach ($request->file('image') as $image) {
 
                 $destinationPath = 'uploads/projects/'; // upload path
-                $product_image = 'uploads/projects/' . date('YmdHis') . "_" . $this->generateRandomString(10) . "_" . $image->getClientOriginalName() . "." . $image->getClientOriginalExtension();
+                $product_image = 'uploads/projects/' . date('YmdHis') . "_" . $this->generateRandomString(10) . "_" . $image->getClientOriginalName();
                 $image->move($destinationPath, $product_image);
 
                 $image = new ProjectImage([
@@ -75,6 +87,8 @@ class ProjectController extends Controller
             }
         }
 
+
+      
 
         return redirect()->back()->with('status', 'New Award Added Sucessfully.');
     }
@@ -173,6 +187,7 @@ class ProjectController extends Controller
         $project->slug = $request['slug'];
         $project->order = $request['order'];
         $project->description = $request['description'];
+
         $data = array(
             'title' => $project->title,
             'slug' => $project->slug,
@@ -184,6 +199,36 @@ class ProjectController extends Controller
         $slug = $request['slug'];
         return redirect()->route('projects/view-projects', $slug)->with('update', 'Project Update Sucessfully.');
     }
+
+
+    public function update_cover(Request $request)
+    {
+        $this->validate($request, [
+            'id' => ['required'],
+            'cover' => ['required']
+        ]);
+        $project = new Project();
+
+        if($request->hasFile('cover')){
+            $cover = $request['cover'];
+            $destinationPath = 'uploads/projects/'; // upload path
+                $product_image = 'uploads/projects/' . date('YmdHis') . "_" . $this->generateRandomString(10) . "_" . $cover->getClientOriginalName();
+                $cover->move($destinationPath, $product_image);
+            $project->cover_image = $product_image;
+        }
+        
+
+        $data = array(
+            'cover_image' => $project->cover_image,
+            
+        );
+        Project::where('id', $request['id'])->update($data);
+
+        $slug = $request['slug'];
+        return redirect()->route('projects/view-projects', $slug)->with('update', 'Project Update Sucessfully.');
+    }
+
+
 
     /**
      * Remove the specified resource from storage.

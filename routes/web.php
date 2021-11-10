@@ -128,6 +128,15 @@ Route::get('services', function () {
 });
 
 
+Route::get('gallery', function () {
+    $publications = Publication::where('status',1)->orderBy('order', 'ASC')->get();
+    $awards = Award::where('status',1)->orderBy('order', 'ASC')->get();
+    $services = Service::orderBy('order', 'ASC')->get();
+    $projects = Project::where('status',1)->orderBy('order', 'ASC')->get();
+    return view('gallery_image',['awards' => $awards, 'projects' => $projects,'services' => $services, 'publications' => $publications]);
+});
+
+
 
 Route::get('contact', function () {
     $publications = Publication::where('status',1)->orderBy('order', 'ASC')->get();
@@ -229,6 +238,7 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::post('save-projects', [ProjectController::class, 'store'])->name('save-projects');
     Route::post('update-projects', [ProjectController::class, 'update'])->name('update-projects');
+    Route::post('update-project-cover', [ProjectController::class, 'update_cover'])->name('update-project-cover');
     Route::get('projects/view-projects/{slug}', [ProjectController::class, 'view'])->name('projects/view-projects');
     Route::get('projects/disable/{slug}', [ProjectController::class, 'disable'])->name('projects/disable');
     Route::get('projects/enable/{slug}', [ProjectController::class, 'enable'])->name('projects/enable');

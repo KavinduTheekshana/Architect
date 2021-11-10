@@ -371,6 +371,9 @@ img {
 }
 
 @media only screen and (width: 1024px) {
+  .about .hoverimage img {
+    height: 410px;
+  }
   .main-wrapper .row .center .content .gray-bg .color .mySwiper .height {
     height: 410px !important;
   }
@@ -429,6 +432,12 @@ p {
 }
 
 @media only screen and (max-width: 1024px) {
+  .about .hoverimage {
+    overflow: hidden;
+  }
+  .about .hoverimage img {
+    height: 404px !important;
+  }
   .main-wrapper {
     min-height: calc(100vh - 180px) !important;
   }
@@ -1564,5 +1573,13 @@ p {
   height: -moz-fit-content !important;
   height: fit-content !important;
   margin: auto;
+}
+
+.about .hoverimage {
+  overflow: hidden;
+}
+
+.about .hoverimage img {
+  height: 494px;
 }
 /*# sourceMappingURL=style.css.map */

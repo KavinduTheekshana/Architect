@@ -111,7 +111,7 @@
                   <nav class="nav flex-column menu-nav">
                     <a class="nav-link {{ Request::segment(1) === null ? 'active' : null }}" href="{{ url('/') }}">Home</a>
                     <a class="nav-link {{ Request::segment(1) === 'about' ? 'active' : null }}" href="{{ url('about') }}">About</a>
-                    <a id="gallery-menu-web" class="nav-link {{ Request::segment(1) === 'gallery' ? 'active' : null }}" onclick="myGallery()" href="javascript:void(0);">gallery</a>
+                    <a id="gallery-menu-web" class="nav-link {{ Request::segment(1) === 'gallery' ? 'active' : null }}"  href="{{ url('gallery') }}">gallery</a>
                     <a id="awards-menu-web" class="nav-link {{ Request::segment(1) === 'awards' ? 'active' : null }}" onclick="myAwards()" href="javascript:void(0);">Awards</a>
                     <a id="publications-menu-web" class="nav-link {{ Request::segment(1) === 'publications' ? 'active' : null }}" onclick="myPublications()" href="javascript:void(0);">Publications</a>
                     <a class="nav-link {{ Request::segment(1) === 'contact' ? 'active' : null }}" href="{{ url('contact') }}">contact</a>
@@ -119,16 +119,7 @@
                 </div>
                 <div id="middle" class="middle">
 
-                  <nav id="second-menu-gallery" class="nav flex-column second-menu-nav d-none">
-                    <ul class="temp-ul">
-                      @foreach($projects as $project)
-                      <li>
-                        <a class="nav-link {{ Request::segment(2) === $project->slug ? 'active' : null }}" href="{{ url('gallery/'.$project->slug) }}">{{$project->title}}
-                        </a>
-                      </li>
-                      @endforeach
-                    </ul>
-                  </nav>
+             
 
                   <nav id="second-menu-awards" class="nav flex-column second-menu-nav d-none">
                     <ul class="temp-ul">

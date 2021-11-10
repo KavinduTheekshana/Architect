@@ -28,7 +28,7 @@
     @endif
 
     <div class="card p-5">
-    <h3 class="mb-4">View or Update Project</h3>
+        <h3 class="mb-4">View or Update Project</h3>
 
         <form role="form" action="{{route('update-projects')}}" method="POST" enctype="multipart/form-data">
             @csrf
@@ -69,7 +69,16 @@
                 </div>
             </div>
 
-            <div class="row pt-5 pb-5">
+
+
+
+
+
+
+
+
+
+            <div class="row pt-1 pb-5">
                 @foreach($project->project_images as $projects)
                 <div class="col-md-3 mt-4">
                     <img src="{{asset($projects->url)}}" alt="">
@@ -81,10 +90,8 @@
 
 
 
-
             <div class="text-right">
-
-                <a href="{{ url('projects/delete',[$project->slug]) }}" type="button" class="btn btn-danger ml-auto">Delete</a>
+                <a href="{{ url('projects/delete',[$project->slug]) }}" type="button" class="btn btn-danger ml-auto">&nbsp; &nbsp; &nbsp; &nbsp; Delete Project &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</a>
 
                 <button type="submit" class="btn btn-warning ml-auto">Update Product Details</button>
 
@@ -93,6 +100,51 @@
 
 
         </form>
+
+        <br>
+
+        <form role="form" action="{{route('update-project-cover')}}" method="POST" enctype="multipart/form-data">
+            @csrf
+
+
+            <div class="mb-3 row required">
+
+                <div class="col-sm-10">
+                    <input type="text" name="id" class="form-control" value="{{$project->id}}" readonly hidden>
+                    <input type="text" name="slug" class="form-control" value="{{$project->slug}}" placeholder="Slug" hidden>
+                </div>
+            </div>
+
+
+            <div class="row pt-5 pb-5">
+
+                <div class="col-md-4 mt-4">
+                    <img src="{{asset($project->cover_image)}}" alt="">
+                </div>
+
+            </div>
+
+            <div class="mb-3 mt-4 row required">
+                <label for="staticEmail" class="col-sm-2 col-form-label">Cover</label>
+                <div class="col-sm-10">
+                    <input class="form-control" name="cover" type="file" id="formFileMultiple">
+                </div>
+            </div>
+
+
+            <div class="text-right">
+
+
+                <button type="submit" class="btn btn-warning ml-auto">Update Product Cover Image</button>
+
+            </div>
+
+
+        </form>
+
+
+
+
     </div>
 </div>
 
