@@ -26,7 +26,7 @@
             <div class="about">
                 <div class="container p-0">
                     <div class="center m-auto p-0 hoverimage">
-                        <img src="{{asset('app/image/galleries/Awards Cover.jpg')}}" id="cover_image_gallery" style="height: 494px;" alt="">
+                        <img src="{{asset('app/image/galleries/Awards Cover_V2.jpg')}}" id="cover_image_gallery" style="height: 494px;" alt="">
                     </div>
                 </div>
             </div>
