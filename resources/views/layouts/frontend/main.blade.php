@@ -108,14 +108,19 @@
             <div class="col col-lg-2 pr-1 pl-0 side-menu">
               <div class="menu">
                 <div class="top">
+                  <div class="overflow" style="    overflow: auto;
+    height: 115%;">
+
+                 
                   <nav class="nav flex-column menu-nav">
                     <a class="nav-link {{ Request::segment(1) === null ? 'active' : null }}" href="{{ url('/') }}">Home</a>
                     <a class="nav-link {{ Request::segment(1) === 'about' ? 'active' : null }}" href="{{ url('about') }}">About</a>
                     <a id="gallery-menu-web" class="nav-link {{ Request::segment(1) === 'gallery' ? 'active' : null }}"  href="{{ url('gallery') }}">gallery</a>
-                    <a id="awards-menu-web" class="nav-link {{ Request::segment(1) === 'awards' ? 'active' : null }}" onclick="myAwards()" href="javascript:void(0);">Awards</a>
-                    <a id="publications-menu-web" class="nav-link {{ Request::segment(1) === 'publications' ? 'active' : null }}" onclick="myPublications()" href="javascript:void(0);">Publications</a>
+                    <a id="awards-menu-web" class="nav-link {{ Request::segment(1) === 'awards' ? 'active' : null }}" onclick="myAwards()" href="{{ url('awards') }}">Awards</a>
+                    <a id="publications-menu-web" class="nav-link {{ Request::segment(1) === 'publications' ? 'active' : null }}" onclick="myPublications()" href="{{ url('publications') }}">Publications</a>
                     <a class="nav-link {{ Request::segment(1) === 'contact' ? 'active' : null }}" href="{{ url('contact') }}">contact</a>
                   </nav>
+                </div>
                 </div>
                 <div id="middle" class="middle">
 
@@ -133,7 +138,7 @@
                   </nav>
 
 
-                  <nav id="second-menu-publications" class="nav flex-column second-menu-nav d-none">
+                  <!-- <nav id="second-menu-publications" class="nav flex-column second-menu-nav d-none">
                     <ul class="temp-ul">
                     @foreach($publications as $publication)
                       <li>
@@ -142,7 +147,7 @@
                       </li>
                       @endforeach
                     </ul>
-                  </nav>
+                  </nav> -->
 
 
 

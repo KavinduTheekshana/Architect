@@ -172,6 +172,9 @@ body {
 }
 
 @media only screen and (max-width: 1000px) {
+  .swiper-pagination {
+    display: none !important;
+  }
   .contact-details .container {
     -webkit-box-pack: center;
         -ms-flex-pack: center;
@@ -1110,7 +1113,6 @@ p {
 }
 
 .main-wrapper .row .center .content .gray-bg .color .mySwiper .swiper-slide img {
-  height: 100%;
   -o-object-fit: cover;
      object-fit: cover;
   overflow: hidden;

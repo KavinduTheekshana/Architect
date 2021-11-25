@@ -136,6 +136,22 @@ Route::get('gallery', function () {
     return view('gallery_image',['awards' => $awards, 'projects' => $projects,'services' => $services, 'publications' => $publications]);
 });
 
+Route::get('publications', function () {
+    $publications = Publication::where('status',1)->orderBy('order', 'ASC')->get();
+    $awards = Award::where('status',1)->orderBy('order', 'ASC')->get();
+    $services = Service::orderBy('order', 'ASC')->get();
+    $projects = Project::where('status',1)->orderBy('order', 'ASC')->get();
+    return view('publication_image',['awards' => $awards, 'projects' => $projects,'services' => $services, 'publications' => $publications]);
+});
+
+Route::get('awards', function () {
+    $publications = Publication::where('status',1)->orderBy('order', 'ASC')->get();
+    $awards = Award::where('status',1)->orderBy('order', 'ASC')->get();
+    $services = Service::orderBy('order', 'ASC')->get();
+    $projects = Project::where('status',1)->orderBy('order', 'ASC')->get();
+    return view('award_image',['awards' => $awards, 'projects' => $projects,'services' => $services, 'publications' => $publications]);
+});
+
 
 
 Route::get('contact', function () {

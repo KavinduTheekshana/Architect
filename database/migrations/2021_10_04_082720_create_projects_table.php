@@ -19,6 +19,7 @@ class CreateProjectsTable extends Migration
             $table->string('title');
             $table->string('slug');
             $table->longText('description');
+            $table->longText('cover_image');
             $table->boolean('status')->default(true);
             $table->timestamps();
         });
