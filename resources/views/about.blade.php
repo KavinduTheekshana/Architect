@@ -14,7 +14,7 @@
     <h6 class="align-middle">
       DAMITH S MUNASINGHE ASSOCIATES (DSMA),
     </h6>
-    <p>
+    <p class="description">
       is a registered organization with a qualified young team of
       Architects, Interior designers, Landscape Architects,
       Engineers, Green Consultants and Quantity Surveyors. The
@@ -75,7 +75,7 @@
               <h6 class="align-middle">
                 DAMITH S MUNASINGHE ASSOCIATES (DSMA),
               </h6>
-              <p>
+              <p class="description">
                 is a registered organization with a qualified
                 young team of Architects, Interior designers,
                 Landscape Architects, Engineers, Green Consultants

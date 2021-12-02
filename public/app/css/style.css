@@ -435,6 +435,14 @@ p {
 }
 
 @media only screen and (max-width: 1024px) {
+  .main-wrapper .row .center .content .gray-bg .color .about h6 {
+    margin-top: 48px !important;
+  }
+  .main-wrapper .row .center .content .gray-bg .color .about .description {
+    padding-right: 10px;
+    overflow: auto;
+    height: 100px;
+  }
   .about .hoverimage {
     overflow: hidden;
   }
@@ -821,7 +829,8 @@ p {
 }
 
 .main-wrapper .row .center .content .menu .top {
-  padding-top: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
   height: 35%;
   width: 100%;
   background-color: #888888;

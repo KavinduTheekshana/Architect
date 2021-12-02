@@ -32,7 +32,8 @@
         <a class="navbar-brand" href="#"><img src="{{asset('app/image/logo-mob-icon.png')}}" alt="" /></a>
         <button id="navbar-toggler-menu" class="navbar-toggler" type="button">
           <!-- <span class="navbar-toggler-icon"></span> -->
-          <img src="{{asset('app/image/icon/menu.svg')}}" alt="" />
+          <i class="fa fa-bars" aria-hidden="true" style="font-size: 28px;"></i>
+          <!-- <img src="{{asset('app/image/icon/menu.svg')}}" alt="" /> -->
         </button>
 
         <button id="navbar-toggler-times" class="navbar-toggler d-none" type="button">
@@ -108,8 +109,7 @@
             <div class="col col-lg-2 pr-1 pl-0 side-menu">
               <div class="menu">
                 <div class="top">
-                  <div class="overflow" style="    overflow: auto;
-    height: 115%;">
+                  <div class="overflow">
 
                  
                   <nav class="nav flex-column menu-nav">
