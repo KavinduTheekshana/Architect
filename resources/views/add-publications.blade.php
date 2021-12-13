@@ -38,7 +38,7 @@
                 </div>
             </div>
 
-            <div class="mb-3 row required">
+            <div class="mb-3 row">
                 <label for="staticEmail" class="col-sm-2 col-form-label">Place</label>
                 <div class="col-sm-10">
                     <input type="text" name="place" class="form-control" placeholder="Enter publication Place">
@@ -46,14 +46,23 @@
             </div>
 
             <div class="mb-3 row">
+                <label for="staticEmail" class="col-sm-2 col-form-label">Link</label>
+                <div class="col-sm-10">
+                    <input type="text" name="link" class="form-control" placeholder="Link">
+                </div>
+            </div>
+
+            <div class="mb-3 row required">
                 <label for="staticEmail" class="col-sm-2 col-form-label">Order</label>
                 <div class="col-sm-10">
                     <input type="number" name="order" class="form-control" placeholder="Enter Order Number">
                 </div>
             </div>
 
+        
 
-            <div class="mb-3 row required">
+
+            <div class="mb-3 row">
                 <label for="staticEmail" class="col-sm-2 col-form-label">Description</label>
                 <div class="col-sm-10">
                     <textarea class="form-control" name="description" id="exampleFormControlTextarea1" rows="15" placeholder="publication Description"></textarea>

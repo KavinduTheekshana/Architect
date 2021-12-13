@@ -15,8 +15,20 @@
     </ul>
 
     <p>
-    {{$single_publication->description}}
+        {{$single_publication->description}}
     </p>
+
+    @if($single_publication->link != null)
+    <ul>
+        <li>
+        <a  class="nav-link" href="{{$single_publication->link}}" style="padding-left: 17px; font-style: normal; font-size: 11px;">View More</p>
+            <!-- <a href="{{ url('publication',$single_publication->slug) }}">{{$single_publication->place}} -->
+            </a>
+        </li>
+    </ul>
+    
+    @endif
+
 </nav>
 @endpush
 
@@ -50,11 +62,11 @@
 <script>
     var swiper = new Swiper(".mySwiper", {
         keyboard: {
-          enabled: true,
+            enabled: true,
         },
         pagination: {
-          el: ".swiper-pagination",
-          clickable: true,
+            el: ".swiper-pagination",
+            clickable: true,
         },
         loop: true,
         navigation: {

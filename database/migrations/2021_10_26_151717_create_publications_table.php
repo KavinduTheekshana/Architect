@@ -18,8 +18,9 @@ class CreatePublicationsTable extends Migration
             $table->integer('order')->nullable();
             $table->string('title');
             $table->string('slug');
-            $table->string('place');
-            $table->longText('description');
+            $table->string('link')->nullable();
+            $table->string('place')->nullable();
+            $table->longText('description')->nullable();
             $table->boolean('status')->default(true);
             $table->timestamps();
         });

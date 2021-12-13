@@ -51,13 +51,14 @@ class PublicationController extends Controller
         $this->validate($request, [
             'title' => ['string', 'required'],
             'order' => ['integer'],
-            'description' => ['string', 'required'],
+            // 'description' => ['string', 'required'],
             'image' => ['required']
         ]);
         $publication = new Publication();
         $publication->title = $request['title'];
         $publication->slug = $this->slug($request['title']);
         $publication->place = $request['place'];
+        $publication->link = $request['link'];
         $publication->order = $request['order'];
         $publication->description = $request['description'];
         $publication->save();
@@ -146,16 +147,18 @@ class PublicationController extends Controller
             'title' => ['string', 'required'],
             'slug' => ['string', 'required'],
             'order' => ['integer'],
-            'description' => ['string', 'required']
+            // 'description' => ['string', 'required']
         ]);
         $publication = new Publication();
         $publication->title = $request['title'];
         $publication->slug = $request['slug'];
+        $publication->link = $request['link'];
         $publication->order = $request['order'];
         $publication->description = $request['description'];
         $data = array(
             'title' => $publication->title,
             'slug' => $publication->slug,
+            'link' => $publication->link,
             'order' => $publication->order,
             'description' => $publication->description,
         );
