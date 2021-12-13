@@ -21,7 +21,7 @@
     @if($single_publication->link != null)
     <ul>
         <li>
-        <a  class="nav-link" href="{{$single_publication->link}}" style="padding-left: 17px; font-style: normal; font-size: 11px;">View More</p>
+        <a class="nav-link" href="{{$single_publication->link}}" target="_blank" style="padding-left: 17px; font-style: normal; font-size: 11px;">View More</p>
             <!-- <a href="{{ url('publication',$single_publication->slug) }}">{{$single_publication->place}} -->
             </a>
         </li>
