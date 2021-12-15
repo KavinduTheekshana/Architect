@@ -23,6 +23,21 @@
   <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
 
 
+
+
+     <!-- Google Analytics -->
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'G-D3T30SX9LJ', 'auto');
+ga('send', 'pageview');
+</script>
+<!-- End Google Analytics -->
+
+
 </head>
 
 <body onload="Justify()">
@@ -225,18 +240,8 @@
     <script src="{{ URL::asset('app/js/main.js'); }} "></script>
 
 
-    
-    <!-- Google Analytics -->
-<script>
-(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
-ga('create', 'G-D3T30SX9LJ', 'auto');
-ga('send', 'pageview');
-</script>
-<!-- End Google Analytics -->
+ 
 
 
 </body>
