@@ -6,7 +6,9 @@ use Illuminate\Support\Arr;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Facades\Storage;
+use League\MimeTypeDetection\FinfoMimeTypeDetector;
 
+#[\AllowDynamicProperties]
 class TemporaryUploadedFile extends UploadedFile
 {
     protected $storage;
@@ -23,12 +25,17 @@ class TemporaryUploadedFile extends UploadedFile
         parent::__construct(stream_get_meta_data($tmpFile)['uri'], $this->path);
     }
 
-    public function isValid()
+    public function getPath(): string
+    {
+        return $this->storage->path(FileUploadConfiguration::directory());
+    }
+
+    public function isValid(): bool
     {
         return true;
     }
 
-    public function getSize()
+    public function getSize(): int
     {
         if (app()->runningUnitTests() && str($this->getfilename())->contains('-size=')) {
             return (int) str($this->getFilename())->between('-size=', '.')->__toString();
@@ -37,24 +44,41 @@ class TemporaryUploadedFile extends UploadedFile
         return (int) $this->storage->size($this->path);
     }
 
-    public function getMimeType()
+    public function getMimeType(): string
     {
-        return $this->storage->mimeType($this->path);
+        $mimeType = $this->storage->mimeType($this->path);
+
+        // Flysystem V2.0+ removed guess mimeType from extension support, so it has been re-added back
+        // in here to ensure the correct mimeType is returned when using faked files in tests
+        if (in_array($mimeType, ['application/octet-stream', 'inode/x-empty', 'application/x-empty'])) {
+            $detector = new FinfoMimeTypeDetector();
+
+            $mimeType = $detector->detectMimeTypeFromPath($this->path) ?: 'text/plain';
+        }
+
+        return $mimeType;
     }
 
-    public function getFilename()
+    public function getFilename(): string
     {
         return $this->getName($this->path);
     }
 
-    public function getRealPath()
+    public function getRealPath(): string
     {
         return $this->storage->path($this->path);
     }
 
-    public function getClientOriginalName()
+    public function getClientOriginalName(): string
     {
         return $this->extractOriginalNameFromFilePath($this->path);
+    }
+
+    public function dimensions(): ?array
+    {
+        stream_copy_to_stream($this->storage->readStream($this->path), $tmpFile = tmpfile());
+
+        return @getimagesize(stream_get_meta_data($tmpFile)['uri']);;
     }
 
     public function temporaryUrl()
@@ -108,7 +132,7 @@ class TemporaryUploadedFile extends UploadedFile
         return $this->storage->delete($this->path);
     }
 
-    public function storeAs($path, $name, $options = [])
+    public function storeAs($path, $name = null, $options = [])
     {
         $options = $this->parseOptions($options);
 

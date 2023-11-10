@@ -202,6 +202,7 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/projects/projects-list', 
     return view('projects-list', ['projects' => $projects]);
 })->name('projects-list');
 
+
 Route::middleware(['auth:sanctum', 'verified'])->get('/awards/award-list', function () {
     $awards = Award::get();
     return view('awards-list', ['awards' => $awards]);
@@ -255,10 +256,13 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('save-projects', [ProjectController::class, 'store'])->name('save-projects');
     Route::post('update-projects', [ProjectController::class, 'update'])->name('update-projects');
     Route::post('update-project-cover', [ProjectController::class, 'update_cover'])->name('update-project-cover');
+    Route::post('update-project-image', [ProjectController::class, 'update_image'])->name('update-project-image');
     Route::get('projects/view-projects/{slug}', [ProjectController::class, 'view'])->name('projects/view-projects');
+    Route::get('projects/view-projects-image/{slug}', [ProjectController::class, 'image'])->name('view-project-image');
     Route::get('projects/disable/{slug}', [ProjectController::class, 'disable'])->name('projects/disable');
     Route::get('projects/enable/{slug}', [ProjectController::class, 'enable'])->name('projects/enable');
     Route::get('projects/delete/{slug}', [ProjectController::class, 'delete'])->name('projects/delete');
+    Route::get('projects/delete-project-image/{id}', [ProjectController::class, 'deleteimage'])->name('delete-project-image');
 
     Route::post('asign-gallery', [HomeController::class, 'store'])->name('asign-gallery');
 

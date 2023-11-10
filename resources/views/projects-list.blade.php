@@ -49,6 +49,7 @@
                         @else
                         <a href="enable/{{$project->slug}}" type="button" class="btn btn-primary"><i class="fas fa-unlock"></i></a>
                         @endif
+                        <a href="view-projects-image/{{$project->slug}}" type="button" class="btn btn-success"><i class="fas fa-image"></i></a>
                         <a href="view-projects/{{$project->slug}}" type="button" class="btn btn-dark"><i class="fas fa-eye"></i></a>
                         <a href="delete/{{$project->slug}}" type="button" id="btn_delete" class="btn btn-danger"><i class="fas fa-trash"></i></a>
                     </td>

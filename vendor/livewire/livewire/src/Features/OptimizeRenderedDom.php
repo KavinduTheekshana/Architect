@@ -13,7 +13,7 @@ class OptimizeRenderedDom
     function __construct()
     {
         Livewire::listen('component.dehydrate.initial', function ($component, $response) {
-            $response->memo['htmlHash'] = hash('crc32b', $response->effects['html']);
+            $response->memo['htmlHash'] = hash('crc32b', $response->effects['html'] ?? '');
         });
 
         Livewire::listen('component.hydrate.subsequent', function ($component, $request) {
@@ -28,6 +28,10 @@ class OptimizeRenderedDom
             if ($oldHash === $newHash) {
                 $response->effects['html'] = null;
             }
+        });
+
+        Livewire::listen('flush-state', function() {
+            $this->htmlHashesByComponent = [];
         });
     }
 }

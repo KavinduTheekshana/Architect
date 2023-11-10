@@ -17,11 +17,11 @@ class ProjectController extends Controller
      */
     public function gallery($slug)
     {
-        $awards = Award::where('status',1)->orderBy('order', 'ASC')->get();
-        $publications = Publication::where('status',1)->orderBy('order', 'ASC')->get();
-        $projects = Project::where('status',1)->orderBy('order', 'ASC')->get();
+        $awards = Award::where('status', 1)->orderBy('order', 'ASC')->get();
+        $publications = Publication::where('status', 1)->orderBy('order', 'ASC')->get();
+        $projects = Project::where('status', 1)->orderBy('order', 'ASC')->get();
         $single_project = Project::where('slug', $slug)->first();
-        return view('gallery', ['awards' => $awards, 'projects' => $projects, 'single_project' => $single_project,'publications' => $publications]);
+        return view('gallery', ['awards' => $awards, 'projects' => $projects, 'single_project' => $single_project, 'publications' => $publications]);
     }
 
     /**
@@ -54,13 +54,13 @@ class ProjectController extends Controller
         $project->slug = $this->slug($request['title']);
         $project->order = $request['order'];
         $project->description = $request['description'];
-       
 
-        if($request->hasFile('cover')){
+
+        if ($request->hasFile('cover')) {
             $cover = $request['cover'];
             $destinationPath = 'uploads/projects/'; // upload path
-                $product_image = 'uploads/projects/' . date('YmdHis') . "_" . $this->generateRandomString(10) . "_" . $cover->getClientOriginalName() . "." . $cover->getClientOriginalExtension();
-                $cover->move($destinationPath, $product_image);
+            $product_image = 'uploads/projects/' . date('YmdHis') . "_" . $this->generateRandomString(10) . "_" . $cover->getClientOriginalName() . "." . $cover->getClientOriginalExtension();
+            $cover->move($destinationPath, $product_image);
             $project->cover_image = $product_image;
         }
         $project->save();
@@ -88,7 +88,7 @@ class ProjectController extends Controller
         }
 
 
-      
+
 
         return redirect()->back()->with('status', 'New Award Added Sucessfully.');
     }
@@ -137,11 +137,31 @@ class ProjectController extends Controller
         return redirect()->route('projects-list')->with('delete', 'Project Delete Sucessfully.');
         // return view('awards-list')->with('delete', 'Award Delete Sucessfully.');
     }
+    public function deleteimage($id)
+    {
+
+        $imageCount = ProjectImage::count();
+
+        if ($imageCount > 1) {
+            // If more than one image exists, proceed with delete
+            ProjectImage::where('id', $id)->delete();
+            return redirect()->back()->with('status', 'Image deleted successfully.');
+        } else {
+            // If only one image remains, prevent deletion
+            return redirect()->back()->with('delete', 'Cannot delete the last image.');
+        }
+    }
 
     public function view($slug)
     {
         $project = Project::where('slug', $slug)->first();
         return view('view-projects', ['project' => $project]);
+    }
+
+    public function image($slug)
+    {
+        $project = Project::where('slug', $slug)->first();
+        return view('project_image', ['project' => $project]);
     }
 
     /**
@@ -209,18 +229,18 @@ class ProjectController extends Controller
         ]);
         $project = new Project();
 
-        if($request->hasFile('cover')){
+        if ($request->hasFile('cover')) {
             $cover = $request['cover'];
             $destinationPath = 'uploads/projects/'; // upload path
-                $product_image = 'uploads/projects/' . date('YmdHis') . "_" . $this->generateRandomString(10) . "_" . $cover->getClientOriginalName();
-                $cover->move($destinationPath, $product_image);
+            $product_image = 'uploads/projects/' . date('YmdHis') . "_" . $this->generateRandomString(10) . "_" . $cover->getClientOriginalName();
+            $cover->move($destinationPath, $product_image);
             $project->cover_image = $product_image;
         }
-        
+
 
         $data = array(
             'cover_image' => $project->cover_image,
-            
+
         );
         Project::where('id', $request['id'])->update($data);
 
@@ -228,6 +248,28 @@ class ProjectController extends Controller
         return redirect()->route('projects/view-projects', $slug)->with('update', 'Project Update Sucessfully.');
     }
 
+
+    public function update_image(Request $request)
+    {
+        $this->validate($request, [
+            'id' => ['required'],
+            'cover' => ['required']
+        ]);
+        $project = new ProjectImage();
+        $project->project_id = $request['id'];
+
+        if ($request->hasFile('cover')) {
+            $cover = $request['cover'];
+            $destinationPath = 'uploads/projects/'; // upload path
+            $product_image = 'uploads/projects/' . date('YmdHis') . "_" . $this->generateRandomString(10) . "_" . $cover->getClientOriginalName() . "." . $cover->getClientOriginalExtension();
+            $cover->move($destinationPath, $product_image);
+            $project->url = $product_image;
+        }
+
+        $project->save();
+
+        return redirect()->back()->with('status', 'Project Image Upload Sucessfully.');
+    }
 
 
     /**
